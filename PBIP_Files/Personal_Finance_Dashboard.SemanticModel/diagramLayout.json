@@ -1,0 +1,61 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 536,
+            "y": 247
+          },
+          "nodeIndex": "TransactionListing",
+          "nodeLineageTag": "d720a654-e488-4094-8ac5-137842b15d2c",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 98,
+            "y": 48
+          },
+          "nodeIndex": "TransactionCategory",
+          "nodeLineageTag": "c5cf7f0c-1389-4be0-800b-01561ed10fff",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 819,
+            "y": 0
+          },
+          "nodeIndex": "DateCalendar",
+          "nodeLineageTag": "34a3358c-a7c2-4999-8486-732424ca8e3c",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

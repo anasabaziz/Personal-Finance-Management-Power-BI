@@ -1,0 +1,4 @@
+EVALUATE
+    SUMMARIZECOLUMNS(
+        "Percentage of Total", [Percentage of Total]
+    )

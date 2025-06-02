@@ -1,0 +1,133 @@
+table TransactionListing
+	lineageTag: d720a654-e488-4094-8ac5-137842b15d2c
+
+	measure 'Positive Amount' = ABS(SUM('TransactionListing'[Amount]))
+		formatString: "RM"#,0.00;-"RM"#,0.00;"RM"#,0.00
+		lineageTag: d368555c-7edc-4822-b385-484b8f468110
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-MY"}
+
+	measure 'Total Expense' =
+			CALCULATE(
+			    SUM(TransactionListing[Amount]),
+			    TransactionCategory[Financial Type] = "Expense"
+			)
+		formatString: "RM"#,0;-"RM"#,0;"RM"#,0
+		lineageTag: 1398421f-73e4-4e1c-8fbb-bdc8b68e2134
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-MY"}
+
+	measure 'Total Income' =
+			CALCULATE(
+			    SUM(TransactionListing[Amount]),
+			    TransactionCategory[Financial Type] = "Income"
+			)
+		formatString: "RM"#,0.00;-"RM"#,0.00;"RM"#,0.00
+		lineageTag: e82db308-6fc6-4c3b-850a-f430feb69402
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-MY"}
+
+	measure 'Wants %' =
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM(TransactionListing[Amount]),
+			        TransactionCategory[Allocation Type] = "Wants"
+			    ),
+			    CALCULATE(
+			        SUM(TransactionListing[Amount]),
+			        TransactionCategory[Allocation Type] IN { "Wants", "Needs", "Investments" }
+			    )
+			)
+		formatString: 0%;-0%;0%
+		lineageTag: b8d88e8b-b005-4185-b8bf-9746e4f504e3
+
+	measure 'Needs %' =
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM(TransactionListing[Amount]),
+			        TransactionCategory[Allocation Type] = "Needs"
+			    ),
+			    CALCULATE(
+			        SUM(TransactionListing[Amount]),
+			        TransactionCategory[Allocation Type] IN { "Wants", "Needs", "Investments" }
+			    )
+			)
+		formatString: 0%;-0%;0%
+		lineageTag: 1fcf254d-395c-4295-b846-e72ed8d1c09f
+
+	measure 'Investments %' =
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM(TransactionListing[Amount]),
+			        TransactionCategory[Allocation Type] = "Investments"
+			    ),
+			    CALCULATE(
+			        SUM(TransactionListing[Amount]),
+			        TransactionCategory[Allocation Type] IN { "Wants", "Needs", "Investments" }
+			    )
+			)
+		formatString: 0%;-0%;0%
+		lineageTag: a0946d69-f5f9-482c-9c54-d1936f5b12fc
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c6b09709-c1cd-4f6d-bcee-c3de313649b4
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Source
+		dataType: string
+		lineageTag: a4562daa-e38e-4a7d-b92d-6e151b4ae4b8
+		summarizeBy: none
+		sourceColumn: Source
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: 2f1574b0-6495-4cde-818a-b025fb784057
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amount
+		dataType: double
+		formatString: "RM"#,0.00;-"RM"#,0.00;"RM"#,0.00
+		lineageTag: 4d846e9a-4ae5-4f08-8754-9ba45cca98f4
+		summarizeBy: sum
+		sourceColumn: Amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"ms-MY"}
+
+	column SubCategory
+		dataType: string
+		lineageTag: 309a5fc4-33c4-49b3-acdb-58c142f33c03
+		summarizeBy: none
+		sourceColumn: SubCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TransactionListing = m
+		mode: import
+		source =
+				let
+				    Source = Table.Combine({Affin_Credit_Card, Affin_Debit_Card, HSBC_Credit_Card, HSBC_Debit_Card, Maybank_Debit_Card}),
+				    #"Sorted Rows" = Table.Sort(Source,{{"Date", Order.Ascending}})
+				in
+				    #"Sorted Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
