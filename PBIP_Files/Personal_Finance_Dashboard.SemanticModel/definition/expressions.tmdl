@@ -1,8 +1,8 @@
 expression Affin_Credit_Card =
 		let
-		    Source = Excel.Workbook(File.Contents("C:\Users\Annaz\OneDrive\Desktop\Anasabaziz Business\PowerBI Projects\Personal Finance Management\DataSource\Affin Credit Card.xlsx"), null, true),
+		    Source = Excel.Workbook(File.Contents(TransactionDataFolder & "\\Affin Credit Card.xlsx"), null, true),
 		    Table1_Table = Source{[Item="Table1",Kind="Table"]}[Data],
-		    #"Changed Type" = Table.TransformColumnTypes(Table1_Table,{{"Date", type date}, {"Source", type text}, {"Description", type text}, {"Amount", type number}, {"SubCategory", type text}})
+		    #"Changed Type" = Table.TransformColumnTypes(Table1_Table,{{"Source", type text}, {"Date", type date}, {"Description", type text}, {"Amount", type number}, {"SubCategory", type text}})
 		in
 		    #"Changed Type"
 	lineageTag: e89e4ae6-b195-42e6-8a34-c23b46711df9
@@ -13,9 +13,9 @@ expression Affin_Credit_Card =
 
 expression Affin_Debit_Card =
 		let
-		    Source = Excel.Workbook(File.Contents("C:\Users\Annaz\OneDrive\Desktop\Anasabaziz Business\PowerBI Projects\Personal Finance Management\DataSource\Affin Debit Card.xlsx"), null, true),
+		    Source = Excel.Workbook(File.Contents(TransactionDataFolder & "\\Affin Debit Card.xlsx"), null, true),
 		    Table1_Table = Source{[Item="Table1",Kind="Table"]}[Data],
-		    #"Changed Type" = Table.TransformColumnTypes(Table1_Table,{{"Date", type date}, {"Source", type text}, {"Description", type text}, {"Amount", type number}, {"SubCategory", type text}})
+		    #"Changed Type" = Table.TransformColumnTypes(Table1_Table,{{"Source", type text}, {"Date", type date}, {"Description", type text}, {"Amount", type number}, {"SubCategory", type text}})
 		in
 		    #"Changed Type"
 	lineageTag: 7ba20b0a-81e1-4916-a03f-e38b6e04a56f
@@ -26,9 +26,9 @@ expression Affin_Debit_Card =
 
 expression HSBC_Credit_Card =
 		let
-		    Source = Excel.Workbook(File.Contents("C:\Users\Annaz\OneDrive\Desktop\Anasabaziz Business\PowerBI Projects\Personal Finance Management\DataSource\HSBC Credit Card.xlsx"), null, true),
+		    Source = Excel.Workbook(File.Contents(TransactionDataFolder & "\\HSBC Credit Card.xlsx"), null, true),
 		    Table1_Table = Source{[Item="Table1",Kind="Table"]}[Data],
-		    #"Changed Type" = Table.TransformColumnTypes(Table1_Table,{{"Date", type date}, {"Source", type text}, {"Description", type text}, {"Amount", type number}, {"SubCategory", type text}})
+		    #"Changed Type" = Table.TransformColumnTypes(Table1_Table,{{"Source", type text}, {"Date", type date}, {"Description", type text}, {"Amount", type number}, {"SubCategory", type text}})
 		in
 		    #"Changed Type"
 	lineageTag: 9fa124a1-0b91-4382-bd88-19fc825c2752
@@ -39,9 +39,9 @@ expression HSBC_Credit_Card =
 
 expression HSBC_Debit_Card =
 		let
-		    Source = Excel.Workbook(File.Contents("C:\Users\Annaz\OneDrive\Desktop\Anasabaziz Business\PowerBI Projects\Personal Finance Management\DataSource\HSBC Debit Card.xlsx"), null, true),
+		    Source = Excel.Workbook(File.Contents(TransactionDataFolder & "\\HSBC Debit Card.xlsx"), null, true),
 		    Table1_Table = Source{[Item="Table1",Kind="Table"]}[Data],
-		    #"Changed Type" = Table.TransformColumnTypes(Table1_Table,{{"Date", type date}, {"Source", type text}, {"Description", type text}, {"Amount", type number}, {"SubCategory", type text}})
+		    #"Changed Type" = Table.TransformColumnTypes(Table1_Table,{{"Source", type text}, {"Date", type date}, {"Description", type text}, {"Amount", type number}, {"SubCategory", type text}})
 		in
 		    #"Changed Type"
 	lineageTag: 53deef94-3aa2-4bcd-987e-65b4a8dae986
@@ -52,9 +52,9 @@ expression HSBC_Debit_Card =
 
 expression Maybank_Debit_Card =
 		let
-		    Source = Excel.Workbook(File.Contents("C:\Users\Annaz\OneDrive\Desktop\Anasabaziz Business\PowerBI Projects\Personal Finance Management\DataSource\Maybank Debit Card.xlsx"), null, true),
+		    Source = Excel.Workbook(File.Contents(TransactionDataFolder & "\\Maybank Debit Card.xlsx"), null, true),
 		    Table1_Table = Source{[Item="Table1",Kind="Table"]}[Data],
-		    #"Changed Type" = Table.TransformColumnTypes(Table1_Table,{{"Date", type date}, {"Source", type text}, {"Description", type text}, {"Amount", type number}, {"SubCategory", type text}})
+		    #"Changed Type" = Table.TransformColumnTypes(Table1_Table,{{"Source", type text}, {"Date", type date}, {"Description", type text}, {"Amount", type number}, {"SubCategory", type text}})
 		in
 		    #"Changed Type"
 	lineageTag: 45ed4981-b6fc-4196-9606-03c8b8c069c6
@@ -62,4 +62,50 @@ expression Maybank_Debit_Card =
 	annotation PBI_NavigationStepName = Navigation
 
 	annotation PBI_ResultType = Table
+
+expression CIMB_Debit_Card =
+		let
+		    Source = Excel.Workbook(File.Contents(TransactionDataFolder & "\\CIMB Debit Card.xlsx"), null, true),
+		    Table1_Table = Source{[Item="Table1",Kind="Table"]}[Data],
+		    #"Changed Type" = Table.TransformColumnTypes(Table1_Table,{{"Source", type text}, {"Date", type date}, {"Description", type text}, {"Amount", type number}, {"SubCategory", type text}})
+		in
+		    #"Changed Type"
+	lineageTag: 21ebefcf-053f-4da4-b140-86894f810bad
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression CIMB_Petronas_Credit_Card =
+		let
+		    Source = Excel.Workbook(File.Contents(TransactionDataFolder & "\\CIMB Petronas Credit Card.xlsx"), null, true),
+		    Table1_Table = Source{[Item="Table1",Kind="Table"]}[Data],
+		    #"Changed Type" = Table.TransformColumnTypes(Table1_Table,{{"Source", type text}, {"Date", type date}, {"Description", type text}, {"Amount", type number}, {"SubCategory", type text}})
+		in
+		    #"Changed Type"
+	lineageTag: 3ab415f7-b0ff-41c9-a0f3-e341c676cba6
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression CIMB_Rebate_Credit_card =
+		let
+		    Source = Excel.Workbook(File.Contents(TransactionDataFolder & "\\CIMB Rebate Credit Card.xlsx"), null, true),
+		    Table1_Table = Source{[Item="Table1",Kind="Table"]}[Data],
+		    #"Changed Type" = Table.TransformColumnTypes(Table1_Table,{{"Source", type text}, {"Date", type date}, {"Description", type text}, {"Amount", type number}, {"SubCategory", type text}})
+		in
+		    #"Changed Type"
+	lineageTag: 955a9145-0dc3-4cce-bb16-5002e03e8657
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression TransactionDataFolder = "C:\Users\anasa\OneDrive\Documents\AnasAbAziz\Personal-Finance-Management-Power-BI\DataSource" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 45a4f30e-e5cf-48a9-92ec-9535697e030c
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
 

@@ -8,17 +8,15 @@ model Model
 
 annotation PBI_ProTooling = ["DevMode","DaxQueryView_Desktop"]
 
-annotation PBIDesktopVersion = 2.141.1754.0 (25.03)+e4409ed908ce97a5e9747f7dc48da475cf1c71a2
+annotation PBI_QueryOrder = ["Affin_Credit_Card","Affin_Debit_Card","HSBC_Credit_Card","HSBC_Debit_Card","Maybank_Debit_Card","CIMB_Debit_Card","CIMB_Petronas_Credit_Card","CIMB_Rebate_Credit_card","TransactionListing","TransactionCategory_dim","DateCalendar","Owner_dim","Refresh Info","TransactionDataFolder"]
 
-annotation PBI_QueryOrder = ["Affin_Credit_Card","Affin_Debit_Card","HSBC_Credit_Card","HSBC_Debit_Card","Maybank_Debit_Card","TransactionListing","TransactionCategory","DateCalendar"]
-
-annotation __PBI_TimeIntelligenceEnabled = 1
+annotation __PBI_TimeIntelligenceEnabled = 0
 
 ref table TransactionListing
-ref table DateTableTemplate_3489d25b-9b35-49c7-93a3-deb96c68cdb0
-ref table TransactionCategory
+ref table TransactionCategory_dim
 ref table DateCalendar
-ref table LocalDateTable_ab442b9d-cd5d-49a4-aa9c-34b5b48e6b14
+ref table Owner_dim
+ref table 'Refresh Info'
 
 ref cultureInfo en-US
 

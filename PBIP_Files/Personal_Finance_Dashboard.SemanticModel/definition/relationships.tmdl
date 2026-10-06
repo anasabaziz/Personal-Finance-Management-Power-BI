@@ -1,13 +1,12 @@
 relationship 32209c55-d91f-4a53-2df7-4c219d628b76
 	fromColumn: TransactionListing.SubCategory
-	toColumn: TransactionCategory.SubCategory
-
-relationship 5f906fb8-edf9-46bc-b25a-7f9b8ee4e99a
-	joinOnDateBehavior: datePartOnly
-	fromColumn: DateCalendar.PK_Date
-	toColumn: LocalDateTable_ab442b9d-cd5d-49a4-aa9c-34b5b48e6b14.Date
+	toColumn: TransactionCategory_dim.SubCategory
 
 relationship 6c7e31c6-7856-203c-4a4d-349b149d7963
 	fromColumn: TransactionListing.Date
 	toColumn: DateCalendar.PK_Date
+
+relationship 37580f74-4c66-9ce2-1cce-5855502f21c0
+	fromColumn: TransactionListing.Source
+	toColumn: Owner_dim.Source
 

@@ -1,9 +1,8 @@
-table TransactionCategory
+table TransactionCategory_dim
 	lineageTag: c5cf7f0c-1389-4be0-800b-01561ed10fff
 
 	column 'Financial Type'
 		dataType: string
-		isHidden
 		lineageTag: d16568b9-6373-4b9a-aa6f-430c2332dafe
 		summarizeBy: none
 		sourceColumn: Financial Type
@@ -14,7 +13,6 @@ table TransactionCategory
 
 	column Category
 		dataType: string
-		isHidden
 		lineageTag: 25b23d3a-07e1-47ee-9c0d-4658d871048b
 		summarizeBy: none
 		sourceColumn: Category
@@ -25,7 +23,6 @@ table TransactionCategory
 
 	column SubCategory
 		dataType: string
-		isHidden
 		lineageTag: 352da5c6-3385-43e1-8409-771b001cd4ef
 		summarizeBy: none
 		sourceColumn: SubCategory
@@ -57,15 +54,23 @@ table TransactionCategory
 			lineageTag: 91afa0f7-edaa-4222-bd51-f2ba99957495
 			column: SubCategory
 
-	partition TransactionCategory = m
+	partition TransactionCategory_dim = m
 		mode: import
 		source =
 				let
-				    Source = Excel.Workbook(File.Contents("C:\Users\Annaz\OneDrive\Desktop\Anasabaziz Business\PowerBI Projects\Personal Finance Dashboard\DataSource\Transaction Category.xlsx"), null, true),
-				    Table1_Table = Source{[Item="Table1",Kind="Table"]}[Data],
-				    #"Changed Type" = Table.TransformColumnTypes(Table1_Table,{{"Financial Type", type text}, {"Category", type text}, {"SubCategory", type text}, {"Allocation Type", type text}})
+					Source = Excel.Workbook(File.Contents(TransactionDataFolder & "\\Transaction Category.xlsx"), null, true),
+					Table1_Table = Source{[Item="Table1", Kind="Table"]}[Data],
+					#"Changed Type" = Table.TransformColumnTypes(
+						Table1_Table,
+						{
+							{"Financial Type", type text},
+							{"Category", type text},
+							{"SubCategory", type text},
+							{"Allocation Type", type text}
+						}
+					)
 				in
-				    #"Changed Type"
+					#"Changed Type"
 
 	annotation PBI_NavigationStepName = Navigation
 

@@ -1,0 +1,43 @@
+table Owner_dim
+	lineageTag: 654f05dc-860c-4935-b192-671dde6659ae
+
+	column Owner
+		dataType: string
+		lineageTag: ec3ea589-c130-4296-b0c9-db9697b871e0
+		summarizeBy: none
+		sourceColumn: Owner
+
+		annotation SummarizationSetBy = Automatic
+
+	column Source
+		dataType: string
+		lineageTag: f9d84ef2-1db4-4849-8a7f-05cded1b3eb0
+		summarizeBy: none
+		sourceColumn: Source
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Owner_dim = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(
+				        {
+				            {"Husband", "Affin Credit Card"},
+				            {"Husband", "Affin Debit Card"},
+				            {"Husband", "HSBC Credit Card"},
+				            {"Husband", "HSBC Debit Card"},
+				            {"Husband", "Maybank Debit Card"},
+				            {"Wife", "CIMB Debit Card"},
+				            {"Wife", "CIMB Petronas Credit Card"},
+				            {"Wife", "CIMB Rebate Credit card"}
+				        },
+				        type table [Owner = text, Source = text]
+				    )
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

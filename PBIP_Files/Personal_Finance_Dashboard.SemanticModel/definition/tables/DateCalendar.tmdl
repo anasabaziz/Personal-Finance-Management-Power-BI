@@ -1,5 +1,6 @@
 table DateCalendar
 	lineageTag: 34a3358c-a7c2-4999-8486-732424ca8e3c
+	dataCategory: Time
 
 	column PK_Date
 		dataType: dateTime
@@ -7,11 +8,6 @@ table DateCalendar
 		lineageTag: 3143aca4-71e3-4863-b26c-428ac615872d
 		summarizeBy: none
 		sourceColumn: PK_Date
-
-		variation Variation
-			isDefault
-			relationship: 5f906fb8-edf9-46bc-b25a-7f9b8ee4e99a
-			defaultHierarchy: LocalDateTable_ab442b9d-cd5d-49a4-aa9c-34b5b48e6b14.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -65,6 +61,7 @@ table DateCalendar
 		lineageTag: 04e37c78-8872-451b-a2ea-ade49d36faa1
 		summarizeBy: none
 		sourceColumn: MonthName
+		sortByColumn: MonthNum
 
 		annotation SummarizationSetBy = Automatic
 
@@ -73,6 +70,7 @@ table DateCalendar
 		lineageTag: d4140bf0-7c40-48e4-b3de-c2be69bf699a
 		summarizeBy: none
 		sourceColumn: MonthNameShort
+		sortByColumn: MonthNum
 
 		annotation SummarizationSetBy = Automatic
 
@@ -81,6 +79,7 @@ table DateCalendar
 		lineageTag: dc45ffad-72db-4d63-8a1d-291685245c7d
 		summarizeBy: none
 		sourceColumn: MonthWithYear
+		sortByColumn: MonthNameSorting
 
 		annotation SummarizationSetBy = Automatic
 
@@ -139,9 +138,9 @@ table DateCalendar
 		mode: import
 		source =
 				let
-				    StartDate = #date(2025,1,1),
-				    EndDate = #date(2026, 1, 1),
-				    DateList = List.Dates(StartDate, Number.From(EndDate) - Number.From(StartDate), #duration(1, 0, 0, 0)),
+				    StartDate = Date.StartOfYear(Date.From(List.Min(TransactionListing[Date]))),
+				    EndDate = Date.EndOfYear(Date.AddYears(Date.From(List.Max(TransactionListing[Date])), 1)),
+				    DateList = List.Dates(StartDate, Duration.Days(EndDate - StartDate) + 1, #duration(1, 0, 0, 0)),
 				    DatesAsTable = Table.FromList(DateList, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
 				    RenamedColumnDate = Table.RenameColumns(DatesAsTable, {{"Column1", "PK_Date"}}),
 				    ChangedTypeDate = Table.TransformColumnTypes(RenamedColumnDate,{{"PK_Date", type date}}),
@@ -153,7 +152,7 @@ table DateCalendar
 				    MonthName = Table.AddColumn(MonthNum, "MonthName", each Date.ToText([PK_Date], "MMMM")),
 				    MonthNameShort = Table.AddColumn(MonthName, "MonthNameShort", each Date.ToText([PK_Date], "MMM")),
 				    MonthWIthYear = Table.AddColumn(MonthNameShort, "MonthWithYear", each Number.ToText([Year]) & "-" & [MonthNameShort]),
-				    MonthNameSorting = Table.AddColumn(MonthWIthYear, "MonthNameSorting", each [Year] * 10 + [MonthNum]),
+				    MonthNameSorting = Table.AddColumn(MonthWIthYear, "MonthNameSorting", each [Year] * 100 + [MonthNum]),
 				    WeekNumOfYear = Table.AddColumn(MonthNameSorting, "WeekNumOfYear", each Date.WeekOfYear([PK_Date])),
 				    WeekNameOfYear = Table.AddColumn(WeekNumOfYear, "WeekNameOfYear", each "KW" & Text.PadStart(Number.ToText([WeekNumOfYear]),2,"0")),
 				    WeekWithYear = Table.AddColumn(WeekNameOfYear, "WeekWithYear", each Number.ToText([Year]) & "-" & [WeekNameOfYear]),

@@ -10,7 +10,7 @@ table TransactionListing
 	measure 'Total Expense' =
 			CALCULATE(
 			    SUM(TransactionListing[Amount]),
-			    TransactionCategory[Financial Type] = "Expense"
+			    TransactionCategory_dim[Financial Type] = "Expense"
 			)
 		formatString: "RM"#,0;-"RM"#,0;"RM"#,0
 		lineageTag: 1398421f-73e4-4e1c-8fbb-bdc8b68e2134
@@ -20,7 +20,7 @@ table TransactionListing
 	measure 'Total Income' =
 			CALCULATE(
 			    SUM(TransactionListing[Amount]),
-			    TransactionCategory[Financial Type] = "Income"
+			    TransactionCategory_dim[Financial Type] = "Income"
 			)
 		formatString: "RM"#,0.00;-"RM"#,0.00;"RM"#,0.00
 		lineageTag: e82db308-6fc6-4c3b-850a-f430feb69402
@@ -32,11 +32,11 @@ table TransactionListing
 			DIVIDE(
 			    CALCULATE(
 			        SUM(TransactionListing[Amount]),
-			        TransactionCategory[Allocation Type] = "Wants"
+			        TransactionCategory_dim[Allocation Type] = "Wants"
 			    ),
 			    CALCULATE(
 			        SUM(TransactionListing[Amount]),
-			        TransactionCategory[Allocation Type] IN { "Wants", "Needs", "Investments" }
+			        TransactionCategory_dim[Allocation Type] IN { "Wants", "Needs", "Investments" }
 			    )
 			)
 		formatString: 0%;-0%;0%
@@ -47,11 +47,11 @@ table TransactionListing
 			DIVIDE(
 			    CALCULATE(
 			        SUM(TransactionListing[Amount]),
-			        TransactionCategory[Allocation Type] = "Needs"
+			        TransactionCategory_dim[Allocation Type] = "Needs"
 			    ),
 			    CALCULATE(
 			        SUM(TransactionListing[Amount]),
-			        TransactionCategory[Allocation Type] IN { "Wants", "Needs", "Investments" }
+			        TransactionCategory_dim[Allocation Type] IN { "Wants", "Needs", "Investments" }
 			    )
 			)
 		formatString: 0%;-0%;0%
@@ -62,19 +62,59 @@ table TransactionListing
 			DIVIDE(
 			    CALCULATE(
 			        SUM(TransactionListing[Amount]),
-			        TransactionCategory[Allocation Type] = "Investments"
+			        TransactionCategory_dim[Allocation Type] = "Investments"
 			    ),
 			    CALCULATE(
 			        SUM(TransactionListing[Amount]),
-			        TransactionCategory[Allocation Type] IN { "Wants", "Needs", "Investments" }
+			        TransactionCategory_dim[Allocation Type] IN { "Wants", "Needs", "Investments" }
 			    )
 			)
 		formatString: 0%;-0%;0%
 		lineageTag: a0946d69-f5f9-482c-9c54-d1936f5b12fc
 
+	/// Spending reported as a positive Malaysian Ringgit amount for cards and spending charts.
+	measure 'Expense Amount' = -[Total Expense]
+		formatString: "RM"#,0.00;-"RM"#,0.00;"RM"#,0.00
+		displayFolder: 'Cash Flow'
+		lineageTag: 529f17fa-aa75-4587-82fd-ecfd5e9bbf8e
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-MY"}
+
+	/// Income less spending in the active filter context.
+	measure 'Net Cash Flow' = [Total Income] + [Total Expense]
+		formatString: "RM"#,0.00;-"RM"#,0.00;"RM"#,0.00
+		displayFolder: 'Cash Flow'
+		lineageTag: 2cfed284-56e4-410a-8bf6-6998ccf43588
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-MY"}
+
+	/// Portion of income remaining after spending in the active filter context.
+	measure 'Savings Rate' = DIVIDE([Net Cash Flow], [Total Income])
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 'Cash Flow'
+		lineageTag: 8c412299-421f-41bf-acf8-e3fd257a53f7
+
+	/// Net cash flow for the previous calendar month.
+	measure 'Net Cash Flow Previous Month' =
+			CALCULATE(
+				[Net Cash Flow],
+				DATEADD(DateCalendar[PK_Date], -1, MONTH)
+			)
+		lineageTag: 4b43d49a-fe6d-430b-95ad-a08809c30e01
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Month-over-month change in net cash flow.
+	measure 'Net Cash Flow Change' = [Net Cash Flow] - [Net Cash Flow Previous Month]
+		formatString: "RM"#,0.00;-"RM"#,0.00;"RM"#,0.00
+		displayFolder: 'Cash Flow'
+		lineageTag: 5098bd6d-acff-4c80-b86e-f352fddec9fc
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-MY"}
+
 	column Date
 		dataType: dateTime
-		formatString: Long Date
+		formatString: d/m/yy
 		lineageTag: c6b09709-c1cd-4f6d-bcee-c3de313649b4
 		summarizeBy: none
 		sourceColumn: Date
@@ -82,6 +122,8 @@ table TransactionListing
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
 
 	column Source
 		dataType: string
@@ -122,7 +164,7 @@ table TransactionListing
 		mode: import
 		source =
 				let
-				    Source = Table.Combine({Affin_Credit_Card, Affin_Debit_Card, HSBC_Credit_Card, HSBC_Debit_Card, Maybank_Debit_Card}),
+				    Source = Table.Combine({Affin_Credit_Card, Affin_Debit_Card, HSBC_Credit_Card, HSBC_Debit_Card, Maybank_Debit_Card, CIMB_Debit_Card, CIMB_Petronas_Credit_Card, CIMB_Rebate_Credit_card}),
 				    #"Sorted Rows" = Table.Sort(Source,{{"Date", Order.Ascending}})
 				in
 				    #"Sorted Rows"

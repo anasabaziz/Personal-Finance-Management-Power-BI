@@ -5,12 +5,12 @@
       "ordinal": 0,
       "scrollPosition": {
         "x": 0,
-        "y": 0
+        "y": 1
       },
       "nodes": [
         {
           "location": {
-            "x": 536,
+            "x": 426,
             "y": 247
           },
           "nodeIndex": "TransactionListing",
@@ -19,24 +19,11 @@
             "height": 200,
             "width": 234
           },
-          "zIndex": 1
-        },
-        {
-          "location": {
-            "x": 98,
-            "y": 48
-          },
-          "nodeIndex": "TransactionCategory",
-          "nodeLineageTag": "c5cf7f0c-1389-4be0-800b-01561ed10fff",
-          "size": {
-            "height": 176,
-            "width": 234
-          },
           "zIndex": 3
         },
         {
           "location": {
-            "x": 819,
+            "x": 773,
             "y": 0
           },
           "nodeIndex": "DateCalendar",
@@ -45,7 +32,45 @@
             "height": 300,
             "width": 234
           },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 98,
+            "y": 48
+          },
+          "nodeIndex": "TransactionCategory_dim",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 417,
+            "y": 569.5
+          },
+          "nodeIndex": "Owner_dim",
+          "nodeLineageTag": "654f05dc-860c-4935-b192-671dde6659ae",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
           "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 884,
+            "y": 440.25
+          },
+          "nodeIndex": "Refresh Info",
+          "nodeLineageTag": "b19e298d-d43a-4f5d-8c19-ea0bd68a9042",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 5
         }
       ],
       "name": "All tables",

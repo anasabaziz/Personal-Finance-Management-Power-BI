@@ -10,7 +10,7 @@
                 "color": "#F6F8FC"
               }
             },
-            "transparency": 50
+            "transparency": 0
           }
         ],
         "outspace": [
@@ -22,11 +22,11 @@
     }
   },
   "dataColors": [
-    "#4E7CFF",
-    "#7033FF",
-    "#F65164",
-    "#22C0FF",
-    "#DC7653",
+    "#2563EB",
+    "#16A34A",
+    "#DC2626",
+    "#0891B2",
+    "#D97706",
     "#252423",
     "#717A90",
     "#EEF1F7"
@@ -46,12 +46,12 @@
       "color": "#717A90"
     }
   },
-  "bad": "#F65164",
-  "neutral": "#DC7653",
-  "good": "#4E7CFF",
-  "minimum": "#F65164",
-  "center": "#DC7653",
-  "maximum": "#4E7CFF",
+  "bad": "#DC2626",
+  "neutral": "#D97706",
+  "good": "#16A34A",
+  "minimum": "#DC2626",
+  "center": "#D97706",
+  "maximum": "#16A34A",
   "foregroundNeutralSecondary": "#717A90",
   "backgroundLight": "#EEF1F7",
   "foregroundNeutralTertiary": "#4E7CFF",
