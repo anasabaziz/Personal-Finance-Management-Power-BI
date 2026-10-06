@@ -1,12 +1,14 @@
+/// One row recording the import refresh timestamp in Malaysia time (UTC+8). This timestamp does not describe transaction coverage.
 table 'Refresh Info'
 	lineageTag: b19e298d-d43a-4f5d-8c19-ea0bd68a9042
 
-	/// The Malaysia time at which the imported model data was last refreshed.
+	/// Time the model was refreshed, formatted in Malaysia time (UTC+8). Transaction dates can be older than this timestamp.
 	measure 'Last Refreshed' = FORMAT(MAX('Refresh Info'[Refreshed At]), "d MMM yyyy h:mm AM/PM")
 		formatString: @
 		displayFolder: 'Data Quality'
 		lineageTag: f1e10bc1-cea8-41e3-a090-d99ba46d9263
 
+	/// Import refresh timestamp in Malaysia time (UTC+8).
 	column 'Refreshed At'
 		dataType: dateTime
 		isHidden

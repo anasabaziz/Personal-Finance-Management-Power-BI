@@ -1,32 +1,41 @@
+/// One row per imported bank or credit card transaction. Positive amounts are inflows; negative amounts are outflows. Transfers and card repayments are classified separately from income and expenses.
 table TransactionListing
 	lineageTag: d720a654-e488-4094-8ac5-137842b15d2c
 
+	/// Magnitude of the net signed amount in the current filter context: ABS(SUM(Amount)). Used by the existing Top N filter; this is not gross spending.
 	measure 'Positive Amount' = ABS(SUM('TransactionListing'[Amount]))
 		formatString: "RM"#,0.00;-"RM"#,0.00;"RM"#,0.00
+		isHidden
+		displayFolder: 'Technical'
 		lineageTag: d368555c-7edc-4822-b385-484b8f468110
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-MY"}
 
+	/// Signed sum of transactions classified as Expense. Includes savings and investment contributions under the current mapping; excludes cash transfers and card repayments.
 	measure 'Total Expense' =
 			CALCULATE(
 			    SUM(TransactionListing[Amount]),
 			    TransactionCategory_dim[Financial Type] = "Expense"
 			)
-		formatString: "RM"#,0;-"RM"#,0;"RM"#,0
+		formatString: "RM"#,0.00;-"RM"#,0.00;"RM"#,0.00
+		displayFolder: 'Cash Flow'
 		lineageTag: 1398421f-73e4-4e1c-8fbb-bdc8b68e2134
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-MY"}
 
+	/// Sum of transactions classified as Income, including salary, claims, dividends, interest, and discounts under the current mapping. Excludes transfers and card repayments.
 	measure 'Total Income' =
 			CALCULATE(
 			    SUM(TransactionListing[Amount]),
 			    TransactionCategory_dim[Financial Type] = "Income"
 			)
 		formatString: "RM"#,0.00;-"RM"#,0.00;"RM"#,0.00
+		displayFolder: 'Cash Flow'
 		lineageTag: e82db308-6fc6-4c3b-850a-f430feb69402
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-MY"}
 
+	/// Signed amount allocated to Wants divided by the combined signed amounts allocated to Needs, Wants, and Investments. This is an allocation share, not a percentage of income.
 	measure 'Wants %' =
 			
 			DIVIDE(
@@ -39,9 +48,11 @@ table TransactionListing
 			        TransactionCategory_dim[Allocation Type] IN { "Wants", "Needs", "Investments" }
 			    )
 			)
-		formatString: 0%;-0%;0%
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 'Rates and Allocation'
 		lineageTag: b8d88e8b-b005-4185-b8bf-9746e4f504e3
 
+	/// Signed amount allocated to Needs divided by the combined signed amounts allocated to Needs, Wants, and Investments. This is an allocation share, not a percentage of income.
 	measure 'Needs %' =
 			
 			DIVIDE(
@@ -54,9 +65,11 @@ table TransactionListing
 			        TransactionCategory_dim[Allocation Type] IN { "Wants", "Needs", "Investments" }
 			    )
 			)
-		formatString: 0%;-0%;0%
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 'Rates and Allocation'
 		lineageTag: 1fcf254d-395c-4295-b846-e72ed8d1c09f
 
+	/// Signed amount allocated to Investments divided by the combined signed amounts allocated to Needs, Wants, and Investments. This is an allocation share, not a percentage of income.
 	measure 'Investments %' =
 			
 			DIVIDE(
@@ -69,10 +82,11 @@ table TransactionListing
 			        TransactionCategory_dim[Allocation Type] IN { "Wants", "Needs", "Investments" }
 			    )
 			)
-		formatString: 0%;-0%;0%
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 'Rates and Allocation'
 		lineageTag: a0946d69-f5f9-482c-9c54-d1936f5b12fc
 
-	/// Spending reported as a positive Malaysian Ringgit amount for cards and spending charts.
+	/// Negative of Total Expense, presenting net expense outflows as positive RM. Includes savings and investment contributions under the current mapping.
 	measure 'Expense Amount' = -[Total Expense]
 		formatString: "RM"#,0.00;-"RM"#,0.00;"RM"#,0.00
 		displayFolder: 'Cash Flow'
@@ -80,7 +94,7 @@ table TransactionListing
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-MY"}
 
-	/// Income less spending in the active filter context.
+	/// Total Income plus signed Total Expense in the selected context. Represents surplus after expense-classified savings and investment contributions, rather than change in account balances.
 	measure 'Net Cash Flow' = [Total Income] + [Total Expense]
 		formatString: "RM"#,0.00;-"RM"#,0.00;"RM"#,0.00
 		displayFolder: 'Cash Flow'
@@ -88,33 +102,36 @@ table TransactionListing
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-MY"}
 
-	/// Portion of income remaining after spending in the active filter context.
+	/// Net Cash Flow divided by Total Income. Under the current mapping this is the surplus after savings and investment contributions, not the total savings contribution rate. Returns blank when income is zero or blank.
 	measure 'Savings Rate' = DIVIDE([Net Cash Flow], [Total Income])
 		formatString: 0.0%;-0.0%;0.0%
-		displayFolder: 'Cash Flow'
+		displayFolder: 'Rates and Allocation'
 		lineageTag: 8c412299-421f-41bf-acf8-e3fd257a53f7
 
-	/// Net cash flow for the previous calendar month.
+	/// Net Cash Flow evaluated over the selected dates shifted back one calendar month. Select a single month for a previous-month comparison.
 	measure 'Net Cash Flow Previous Month' =
 			CALCULATE(
 				[Net Cash Flow],
 				DATEADD(DateCalendar[PK_Date], -1, MONTH)
 			)
+		formatString: "RM"#,0.00;-"RM"#,0.00;"RM"#,0.00
+		displayFolder: 'Period Comparisons'
 		lineageTag: 4b43d49a-fe6d-430b-95ad-a08809c30e01
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	/// Month-over-month change in net cash flow.
+	/// Current Net Cash Flow less Net Cash Flow Previous Month in the selected context. Select a single month for a month-over-month comparison.
 	measure 'Net Cash Flow Change' = [Net Cash Flow] - [Net Cash Flow Previous Month]
 		formatString: "RM"#,0.00;-"RM"#,0.00;"RM"#,0.00
-		displayFolder: 'Cash Flow'
+		displayFolder: 'Period Comparisons'
 		lineageTag: 5098bd6d-acff-4c80-b86e-f352fddec9fc
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-MY"}
 
+	/// Transaction date imported from the source workbook.
 	column Date
 		dataType: dateTime
-		formatString: d/m/yy
+		formatString: dd MMM yyyy
 		lineageTag: c6b09709-c1cd-4f6d-bcee-c3de313649b4
 		summarizeBy: none
 		sourceColumn: Date
@@ -125,6 +142,7 @@ table TransactionListing
 
 		annotation PBI_FormatHint = {"isDateTimeCustom":true}
 
+	/// Bank or card account label used to relate the transaction to its owner. Retained for transaction-level investigation.
 	column Source
 		dataType: string
 		lineageTag: a4562daa-e38e-4a7d-b92d-6e151b4ae4b8
@@ -133,6 +151,7 @@ table TransactionListing
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Original transaction description used for search and investigation.
 	column Description
 		dataType: string
 		lineageTag: 2f1574b0-6495-4cde-818a-b025fb784057
@@ -141,8 +160,9 @@ table TransactionListing
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Signed transaction amount in Malaysian ringgit, stored at fixed decimal precision. Positive means inflow; negative means outflow. Retained for the transaction detail table.
 	column Amount
-		dataType: double
+		dataType: decimal
 		formatString: "RM"#,0.00;-"RM"#,0.00;"RM"#,0.00
 		lineageTag: 4d846e9a-4ae5-4f08-8754-9ba45cca98f4
 		summarizeBy: sum
@@ -152,8 +172,10 @@ table TransactionListing
 
 		annotation PBI_FormatHint = {"currencyCulture":"ms-MY"}
 
+	/// Category mapping key linking each transaction to TransactionCategory_dim.
 	column SubCategory
 		dataType: string
+		isHidden
 		lineageTag: 309a5fc4-33c4-49b3-acdb-58c142f33c03
 		summarizeBy: none
 		sourceColumn: SubCategory

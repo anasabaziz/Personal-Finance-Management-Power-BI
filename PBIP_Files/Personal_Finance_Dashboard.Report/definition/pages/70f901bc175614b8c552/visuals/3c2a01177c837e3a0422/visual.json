@@ -7,7 +7,7 @@
     "z": 3000,
     "height": 64,
     "width": 296,
-    "tabOrder": 4000
+    "tabOrder": 3
   },
   "visual": {
     "visualType": "pageNavigator",
@@ -34,7 +34,35 @@
         }
       ]
     },
-    "drillFilterOtherVisuals": true
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Page navigation. Choose Financial Health or Spending Detail.'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
   },
   "howCreated": "InsertVisualButton"
 }

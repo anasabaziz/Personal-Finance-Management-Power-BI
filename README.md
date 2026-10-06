@@ -134,6 +134,24 @@ Select **Close & Apply**, then **Refresh** in Desktop and save the project. Conf
 
 Keep at least one transaction with a valid date. The current calendar query derives its start and end dates from `TransactionListing` and does not handle an empty transaction list.
 
+## Model conventions and report definitions
+
+- Money uses Fixed Decimal Number in Power Query and decimal storage in the model. Monetary measures show RM with two decimals; summary cards can use whole RM. Percentages use one decimal.
+- Calendar numbers do not summarize. The date column is the date-table key. Month and weekday labels use their existing numeric sorting fields; technical sorting fields are hidden.
+- Measures are organized into Cash Flow, Rates and Allocation, Period Comparisons, Technical, and Data Quality folders. Tables, columns, and measures have descriptions. The existing Positive Amount measure remains available to its Top N filter and is hidden from general authoring.
+- Source and signed Amount remain visible for transaction investigation. Signed transaction amounts distinguish inflows from outflows; the overview Spending card uses positive Expense Amount.
+- Spending includes savings and investment contributions because the current category mapping classifies them as Expense. Transfers and credit card repayments are excluded from income and expense measures.
+- The displayed Surplus rate (%) is the existing Savings Rate calculation: Net Cash Flow divided by Total Income. Surplus is after savings and investment contributions classified as spending; it does not measure total savings contributions. Needs, Wants, and Investments are shares of combined allocated outflows, not percentages of income.
+- Information icons explain the summary and allocation calculations. Both pages have visual alternative text and an explicit reading order. Monthly series use different line styles and markers as well as colours.
+
+### Verification of the convention and accessibility update
+
+Source checks covered 4,360 sample transactions and 192 account-month groups. Fixed-decimal conversion preserves every account-month total at cent precision. Category keys are unique, all transaction categories have mappings, and existing DAX expressions and lineage tags are preserved. The pre-existing page-order edit is preserved.
+
+Both pages were reloaded and visually reviewed in Power BI Desktop on 6 October 2026. Allocation percentages, surplus labels, the refresh timestamp, and the restaurant subcategory label fit their containers. The monthly legend uses Income, Spending, and Surplus. Transaction headers use white text on a dark slate background, and all four allocation choices are visible without scrolling. Validation reported no errors and five existing warnings (filter annotations and an unavailable visual schema). Keyboard, screen-reader, and operating-system high-contrast behaviour have not been tested. The sample contains future-dated transactions through December 2026.
+
+The Microsoft report validator reports zero errors and five warnings. Four warnings concern existing `Entity` references inside filter metadata annotations; the actual filter conditions use their `From` aliases correctly, so those annotations are preserved. The fifth warning is an unavailable Microsoft visual-container 2.13.0 schema, which prevents full schema validation of eight existing visuals. Their original schema versions are preserved. Additional checks confirm that all 20 visual bindings resolve, every visual has alternative text, reading orders are unique, and visual bounds do not overlap. Configured text contrast exceeds 4.5:1 and monthly-series colour contrast exceeds 3:1 on the configured light surfaces.
+
 ## Troubleshooting
 
 | Issue | What to check |

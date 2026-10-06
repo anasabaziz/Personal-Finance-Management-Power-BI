@@ -6,8 +6,8 @@
     "y": 15.562310030395137,
     "z": 3000,
     "height": 64.194528875379945,
-    "width": 443.52583586626145,
-    "tabOrder": 1000
+    "width": 400,
+    "tabOrder": 0
   },
   "visual": {
     "visualType": "textbox",
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "FINANCIAL HEALTH OVERVIEW",
+                    "value": "FINANCIAL HEALTH",
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontSize": "20pt",
@@ -55,6 +55,32 @@
               "expr": {
                 "Literal": {
                   "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Financial Health page. Review income, outflows, and remaining surplus.'"
                 }
               }
             }

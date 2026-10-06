@@ -1,6 +1,8 @@
+/// One row per transaction Source, mapping each bank or card account to its household owner.
 table Owner_dim
 	lineageTag: 654f05dc-860c-4935-b192-671dde6659ae
 
+	/// Household owner assigned to the source account.
 	column Owner
 		dataType: string
 		lineageTag: ec3ea589-c130-4296-b0c9-db9697b871e0
@@ -9,6 +11,7 @@ table Owner_dim
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Bank or card account label; unique key for the ownership mapping.
 	column Source
 		dataType: string
 		lineageTag: f9d84ef2-1db4-4849-8a7f-05cded1b3eb0

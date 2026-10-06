@@ -1,5 +1,5 @@
 {
-  "name": "Custom",
+  "name": "Custom-59ea64330a.json",
   "visualStyles": {
     "page": {
       "*": {
@@ -23,7 +23,7 @@
   },
   "dataColors": [
     "#2563EB",
-    "#16A34A",
+    "#15803D",
     "#DC2626",
     "#0891B2",
     "#D97706",
@@ -34,7 +34,7 @@
   "textClasses": {
     "callout": {
       "fontFace": "'Segoe UI', wf_segoe-ui_normal, helvetica, arial, sans-serif",
-      "color": "#717A90"
+      "color": "#334155"
     },
     "title": {
       "fontFace": "'Segoe UI', wf_segoe-ui_normal, helvetica, arial, sans-serif"
@@ -43,16 +43,16 @@
       "fontFace": "'Segoe UI Bold', wf_segoe-ui_bold, helvetica, arial, sans-serif"
     },
     "label": {
-      "color": "#717A90"
+      "color": "#334155"
     }
   },
   "bad": "#DC2626",
   "neutral": "#D97706",
-  "good": "#16A34A",
+  "good": "#15803D",
   "minimum": "#DC2626",
   "center": "#D97706",
-  "maximum": "#16A34A",
-  "foregroundNeutralSecondary": "#717A90",
+  "maximum": "#15803D",
+  "foregroundNeutralSecondary": "#334155",
   "backgroundLight": "#EEF1F7",
   "foregroundNeutralTertiary": "#4E7CFF",
   "background": "#EEF1F7",

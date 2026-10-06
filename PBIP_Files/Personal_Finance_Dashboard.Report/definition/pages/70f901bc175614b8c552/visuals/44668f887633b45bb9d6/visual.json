@@ -6,8 +6,8 @@
     "y": 15.804878048780488,
     "z": 2000,
     "height": 64.097560975609753,
-    "width": 438.14634146341473,
-    "tabOrder": 1000
+    "width": 400,
+    "tabOrder": 0
   },
   "visual": {
     "visualType": "textbox",
@@ -55,6 +55,32 @@
               "expr": {
                 "Literal": {
                   "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Spending Detail page. Filter and inspect spending and transactions.'"
                 }
               }
             }

@@ -11,7 +11,7 @@
       "type": "SharedResources"
     },
     "customTheme": {
-      "name": "Custom08553617638501321.json",
+      "name": "Custom-59ea64330a.json",
       "reportVersionAtImport": {
         "visual": "1.8.98",
         "report": "2.0.98",
@@ -54,8 +54,8 @@
       "type": "RegisteredResources",
       "items": [
         {
-          "name": "Custom08553617638501321.json",
-          "path": "Custom08553617638501321.json",
+          "name": "Custom-59ea64330a.json",
+          "path": "Custom-59ea64330a.json",
           "type": "CustomTheme"
         }
       ]
@@ -73,7 +73,6 @@
     }
   ],
   "settings": {
-    "hideVisualContainerHeader": true,
     "useStylableVisualContainerHeader": true,
     "exportDataMode": "AllowSummarized",
     "defaultDrillFilterOtherVisuals": true,

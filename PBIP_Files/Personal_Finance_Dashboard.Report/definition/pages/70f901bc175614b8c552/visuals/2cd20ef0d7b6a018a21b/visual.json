@@ -3,11 +3,11 @@
   "name": "2cd20ef0d7b6a018a21b",
   "position": {
     "x": 24,
-    "y": 176,
+    "y": 192,
     "z": 4005,
-    "height": 120,
+    "height": 152,
     "width": 200,
-    "tabOrder": 4003
+    "tabOrder": 6
   },
   "visual": {
     "visualType": "slicer",
@@ -83,6 +83,13 @@
                   "Value": "9D"
                 }
               }
+            },
+            "padding": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
             }
           }
         }
@@ -93,7 +100,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'CATEGORY'"
+                  "Value": "'Allocation'"
                 }
               }
             },
@@ -108,6 +115,24 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            },
+            "textSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#334155'"
+                    }
+                  }
                 }
               }
             }
@@ -231,6 +256,66 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Allocation filter for Spending Detail. Use this control to narrow the displayed transactions.'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
                 }
               }
             }

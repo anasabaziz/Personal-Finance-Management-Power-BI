@@ -1,10 +1,13 @@
+/// One row per continuous calendar date, from the first transaction year through the year after the last transaction. Used for filtering, chronological sorting, and time comparisons.
 table DateCalendar
 	lineageTag: 34a3358c-a7c2-4999-8486-732424ca8e3c
 	dataCategory: Time
 
+	/// Unique calendar date at midnight; date-table key used by time intelligence.
 	column PK_Date
 		dataType: dateTime
-		formatString: Long Date
+		isKey
+		formatString: dd MMM yyyy
 		lineageTag: 3143aca4-71e3-4863-b26c-428ac615872d
 		summarizeBy: none
 		sourceColumn: PK_Date
@@ -13,24 +16,27 @@ table DateCalendar
 
 		annotation UnderlyingDateTimeDataType = Date
 
+	/// Calendar year used for filtering; never summed.
 	column Year
 		dataType: int64
 		formatString: 0
 		lineageTag: 8cec3e22-7ca0-491f-9a1c-2ae5d1a85e18
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Year
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Calendar quarter number from 1 to 4.
 	column QuarterofYear
 		dataType: int64
 		formatString: 0
 		lineageTag: 46ea4762-54d2-45cf-82c3-ebd1fd4a750c
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: QuarterofYear
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Calendar quarter label from Q1 to Q4.
 	column QuarterNameOfYear
 		dataType: string
 		lineageTag: ee735680-1173-4763-bd2d-ce0479db7d34
@@ -39,6 +45,7 @@ table DateCalendar
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Calendar year and quarter label.
 	column QuarterWithYear
 		dataType: string
 		lineageTag: de91d270-7d1d-4e19-8952-10d2dcd8245d
@@ -47,15 +54,18 @@ table DateCalendar
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Month number from 1 to 12; sorts month names.
 	column MonthNum
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: b6e3725e-8a1d-45fa-90da-967f9583ab19
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: MonthNum
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Full month name, sorted by MonthNum.
 	column MonthName
 		dataType: string
 		lineageTag: 04e37c78-8872-451b-a2ea-ade49d36faa1
@@ -65,6 +75,7 @@ table DateCalendar
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Abbreviated month name, sorted by MonthNum.
 	column MonthNameShort
 		dataType: string
 		lineageTag: d4140bf0-7c40-48e4-b3de-c2be69bf699a
@@ -74,6 +85,7 @@ table DateCalendar
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Year and abbreviated month label, sorted chronologically by MonthNameSorting.
 	column MonthWithYear
 		dataType: string
 		lineageTag: dc45ffad-72db-4d63-8a1d-291685245c7d
@@ -83,24 +95,28 @@ table DateCalendar
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Technical year-month sorting key calculated as Year times 100 plus MonthNum.
 	column MonthNameSorting
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 0547ba0e-0949-40b8-8664-5d88d453f161
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: MonthNameSorting
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Week number calculated by Power Query Date.WeekOfYear.
 	column WeekNumOfYear
 		dataType: int64
 		formatString: 0
 		lineageTag: 47d32574-5755-462f-b383-86843493551a
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: WeekNumOfYear
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Week number label prefixed with KW.
 	column WeekNameOfYear
 		dataType: string
 		lineageTag: 19a5d260-36f9-4c31-a60f-e0cafe10772b
@@ -109,6 +125,7 @@ table DateCalendar
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Calendar year and week label.
 	column WeekWithYear
 		dataType: string
 		lineageTag: 82a3c81a-31e7-4b06-80ab-efc60bc68b5d
@@ -117,20 +134,24 @@ table DateCalendar
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Day-of-week number calculated by the existing Power Query locale convention.
 	column DayNumOfWeek
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 928b6dda-2fc9-47e6-985d-45c10a588c88
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: DayNumOfWeek
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Abbreviated weekday name, sorted by DayNumOfWeek.
 	column DayNameofWeek
 		dataType: string
 		lineageTag: bcf9b23e-3151-47a4-af83-a63da781c38c
 		summarizeBy: none
 		sourceColumn: DayNameofWeek
+		sortByColumn: DayNumOfWeek
 
 		annotation SummarizationSetBy = Automatic
 

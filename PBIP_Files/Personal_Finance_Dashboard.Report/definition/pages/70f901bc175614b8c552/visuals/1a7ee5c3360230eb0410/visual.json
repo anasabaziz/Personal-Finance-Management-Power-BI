@@ -6,7 +6,8 @@
     "y": 440,
     "z": 4002,
     "height": 264,
-    "width": 1008
+    "width": 1008,
+    "tabOrder": 9
   },
   "visual": {
     "visualType": "tableEx",
@@ -26,7 +27,8 @@
                 }
               },
               "queryRef": "TransactionListing.Date",
-              "nativeQueryRef": "Date"
+              "nativeQueryRef": "Date",
+              "displayName": "Date"
             },
             {
               "field": {
@@ -40,7 +42,8 @@
                 }
               },
               "queryRef": "TransactionListing.Description",
-              "nativeQueryRef": "Description"
+              "nativeQueryRef": "Description",
+              "displayName": "Description"
             },
             {
               "field": {
@@ -54,7 +57,8 @@
                 }
               },
               "queryRef": "TransactionCategory.Allocation Type",
-              "nativeQueryRef": "Allocation Type"
+              "nativeQueryRef": "Allocation Type",
+              "displayName": "Allocation Type"
             },
             {
               "field": {
@@ -73,7 +77,8 @@
                 }
               },
               "queryRef": "TransactionCategory.CategoryHierarchy.SubCategory",
-              "nativeQueryRef": "CategoryHierarchy SubCategory"
+              "nativeQueryRef": "CategoryHierarchy SubCategory",
+              "displayName": "Subcategory"
             },
             {
               "field": {
@@ -87,7 +92,8 @@
                 }
               },
               "queryRef": "TransactionListing.Source",
-              "nativeQueryRef": "Source"
+              "nativeQueryRef": "Account",
+              "displayName": "Account"
             },
             {
               "field": {
@@ -107,7 +113,7 @@
               },
               "queryRef": "Sum(TransactionListing.Amount)",
               "nativeQueryRef": "Amount (RM)",
-              "displayName": "Amount (RM)"
+              "displayName": "Signed amount (RM)"
             }
           ]
         }
@@ -189,6 +195,56 @@
                   "Value": "true"
                 }
               }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "autoSizeColumnWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "columnAdjustment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'growToFit'"
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#334155'"
+                    }
+                  }
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
             }
           }
         }
@@ -205,6 +261,41 @@
             }
           }
         }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            },
+            "fontColorPrimary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#334155'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#334155'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -214,7 +305,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "''"
+                  "Value": "'Transactions'"
                 }
               }
             },
@@ -228,7 +319,39 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#334155'"
+                    }
+                  }
+                }
+              }
+            },
+            "heading": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Heading2'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }
@@ -349,6 +472,112 @@
               "expr": {
                 "Literal": {
                   "Value": "'Condensed'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showTooltipButton": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showVisualInformationButton": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "showOptionsMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "showPinButton": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "showFocusModeButton": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "showCommentButton": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "showPersonalizeVisualButton": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Transactions matching the date, owner, allocation, category, and description filters. Positive amounts are inflows; negative amounts are outflows.'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeaderTooltip": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Transactions matching the date, owner, allocation, category, and description filters. Positive amounts are inflows; negative amounts are outflows.'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            },
+            "titleFontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#334155'"
+                    }
+                  }
                 }
               }
             }

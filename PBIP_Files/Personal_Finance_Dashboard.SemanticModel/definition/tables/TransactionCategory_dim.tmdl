@@ -1,8 +1,11 @@
+/// One row per SubCategory, mapping transactions to financial type, category, and allocation. Savings and investment contributions currently map to Expense.
 table TransactionCategory_dim
 	lineageTag: c5cf7f0c-1389-4be0-800b-01561ed10fff
 
+	/// Classification used by income and expense measures. Asset entries include cash transfers and credit card payments.
 	column 'Financial Type'
 		dataType: string
+		isHidden
 		lineageTag: d16568b9-6373-4b9a-aa6f-430c2332dafe
 		summarizeBy: none
 		sourceColumn: Financial Type
@@ -11,8 +14,10 @@ table TransactionCategory_dim
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Broad category for grouping transaction subcategories.
 	column Category
 		dataType: string
+		isHidden
 		lineageTag: 25b23d3a-07e1-47ee-9c0d-4658d871048b
 		summarizeBy: none
 		sourceColumn: Category
@@ -21,8 +26,10 @@ table TransactionCategory_dim
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Unique mapping key matching transaction SubCategory values.
 	column SubCategory
 		dataType: string
+		isHidden
 		lineageTag: 352da5c6-3385-43e1-8409-771b001cd4ef
 		summarizeBy: none
 		sourceColumn: SubCategory
@@ -31,6 +38,7 @@ table TransactionCategory_dim
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Allocation group used for Needs, Wants, and Investments shares; other values describe income, transfers, or payments.
 	column 'Allocation Type'
 		dataType: string
 		lineageTag: 0aae4f54-c381-49f9-b55c-4a7d6f5dabf0
