@@ -1,4 +1,10 @@
+// Allocation check using existing measures. Replaces the missing Percentage of Total.
+// Shares use allocated outflows as the denominator. Combined share is 1 for mapped,
+// nonzero allocated spending. Individual absent allocations can return BLANK.
 EVALUATE
-    SUMMARIZECOLUMNS(
-        "Percentage of Total", [Percentage of Total]
+    ROW(
+        "Needs share", [Needs %],
+        "Wants share", [Wants %],
+        "Investments share", [Investments %],
+        "Combined share", [Needs %] + [Wants %] + [Investments %]
     )

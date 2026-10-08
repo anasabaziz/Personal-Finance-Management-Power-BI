@@ -1,0 +1,59 @@
+// Check current and prior-month measures against an explicit previous calendar-month window.
+// Return only months containing current transactions; exclude calendar-only future months.
+// The first month has no prior source data; a numerical change there is not a valid comparison.
+DEFINE
+    VAR _monthsWithTransactions =
+        FILTER(
+            SUMMARIZECOLUMNS(
+                'DateCalendar'[Year],
+                'DateCalendar'[MonthNum],
+                "Transaction count", COUNTROWS('TransactionListing')
+            ),
+            [Transaction count] > 0
+        )
+EVALUATE
+    ADDCOLUMNS(
+        _monthsWithTransactions,
+        "Income", [Total Income],
+        "Spending", [Expense Amount],
+        "Surplus", [Net Cash Flow],
+        "Previous month surplus", [Net Cash Flow Previous Month],
+        "Change", [Net Cash Flow Change],
+        "Prior transaction count",
+            VAR _monthStart = DATE('DateCalendar'[Year], 'DateCalendar'[MonthNum], 1)
+            VAR _priorStart = EDATE(_monthStart, -1)
+            RETURN
+                COALESCE(
+                    CALCULATE(
+                        COUNTROWS('TransactionListing'),
+                        REMOVEFILTERS('DateCalendar'),
+                        'DateCalendar'[PK_Date] >= _priorStart,
+                        'DateCalendar'[PK_Date] < _monthStart
+                    ),
+                    0
+                ),
+        "Independent previous surplus",
+            VAR _monthStart = DATE('DateCalendar'[Year], 'DateCalendar'[MonthNum], 1)
+            VAR _priorStart = EDATE(_monthStart, -1)
+            RETURN
+                CALCULATE(
+                    SUM('TransactionListing'[Amount]),
+                    REMOVEFILTERS('DateCalendar'),
+                    'DateCalendar'[PK_Date] >= _priorStart,
+                    'DateCalendar'[PK_Date] < _monthStart,
+                    'TransactionCategory_dim'[Financial Type] = "Income"
+                        || 'TransactionCategory_dim'[Financial Type] = "Expense"
+                ),
+        "Prior comparison status",
+            VAR _monthStart = DATE('DateCalendar'[Year], 'DateCalendar'[MonthNum], 1)
+            VAR _priorStart = EDATE(_monthStart, -1)
+            VAR _priorCount =
+                CALCULATE(
+                    COUNTROWS('TransactionListing'),
+                    REMOVEFILTERS('DateCalendar'),
+                    'DateCalendar'[PK_Date] >= _priorStart,
+                    'DateCalendar'[PK_Date] < _monthStart
+                )
+            RETURN IF(_priorCount > 0, "Prior transactions available", "No prior transactions")
+    )
+ORDER BY 'DateCalendar'[Year], 'DateCalendar'[MonthNum]

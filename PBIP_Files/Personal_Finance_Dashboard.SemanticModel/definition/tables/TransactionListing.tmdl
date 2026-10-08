@@ -120,8 +120,16 @@ table TransactionListing
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	/// Current Net Cash Flow less Net Cash Flow Previous Month in the selected context. Select a single month for a month-over-month comparison.
-	measure 'Net Cash Flow Change' = [Net Cash Flow] - [Net Cash Flow Previous Month]
+	/// Current Net Cash Flow less Net Cash Flow Previous Month. Returns blank when either value is blank; preserves numeric zero when both values are available. Select a single month for a month-over-month comparison.
+	measure 'Net Cash Flow Change' =
+			VAR _currentNetCashFlow = [Net Cash Flow]
+			VAR _previousNetCashFlow = [Net Cash Flow Previous Month]
+			RETURN
+			    IF(
+			        ISBLANK(_currentNetCashFlow) || ISBLANK(_previousNetCashFlow),
+			        BLANK(),
+			        _currentNetCashFlow - _previousNetCashFlow
+			    )
 		formatString: "RM"#,0.00;-"RM"#,0.00;"RM"#,0.00
 		displayFolder: 'Period Comparisons'
 		lineageTag: 5098bd6d-acff-4c80-b86e-f352fddec9fc

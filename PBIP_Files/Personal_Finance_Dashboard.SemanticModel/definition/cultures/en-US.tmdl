@@ -354,16 +354,6 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "account": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.714
-			          }
-			        },
-			        {
 			          "overview": {
 			            "Type": "Noun",
 			            "State": "Suggested",
@@ -1616,6 +1606,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "financial type": {
@@ -1738,6 +1731,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "category": {
@@ -1794,6 +1790,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "sub category": {
@@ -4058,1313 +4057,15 @@ cultureInfo en-US
 			    }
 			  },
 			  "Relationships": {
-			    "owner_dim_owner_own_owner_dim": {
-			      "Binding": {
-			        "ConceptualEntity": "Owner_dim"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "owner_dim.owner": {
-			          "Target": {
-			            "Entity": "owner_dim.owner"
-			          }
-			        },
-			        "owner_dim": {
-			          "Target": {
-			            "Entity": "owner_dim"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Verb": {
-			            "Subject": {
-			              "Role": "owner_dim.owner"
-			            },
-			            "Verbs": [
-			              {
-			                "own": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ],
-			            "Object": {
-			              "Role": "owner_dim"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.75,
-			          "ID": "owners_own_owner_dims"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "owner_dim.owner"
-			            },
-			            "Object": {
-			              "Role": "owner_dim"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "owners_have_owner_dims"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "owner_dim"
-			            },
-			            "Object": {
-			              "Role": "owner_dim.owner"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "owner_dims_have_owners"
-			        }
-			      ]
-			    },
-			    "date_calendar_quarters_with_quarter_with_year": {
-			      "Binding": {
-			        "ConceptualEntity": "DateCalendar"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "date_calendar": {
-			          "Target": {
-			            "Entity": "date_calendar"
-			          }
-			        },
-			        "date_calendar.quarter_with_year": {
-			          "Target": {
-			            "Entity": "date_calendar.quarter_with_year"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Verb": {
-			            "Subject": {
-			              "Role": "date_calendar"
-			            },
-			            "Verbs": [
-			              {
-			                "quarter": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ],
-			            "PrepositionalPhrases": [
-			              {
-			                "Prepositions": [
-			                  {
-			                    "with": {
-			                      "State": "Generated"
-			                    }
-			                  }
-			                ],
-			                "Object": {
-			                  "Role": "date_calendar.quarter_with_year"
-			                }
-			              }
-			            ]
-			          },
-			          "State": "Generated",
-			          "Weight": 0.95,
-			          "ID": "date_calendars_quarter_with_quarter_with_year"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "date_calendar"
-			            },
-			            "Object": {
-			              "Role": "date_calendar.quarter_with_year"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_calendars_have_quarter_with_year"
-			        }
-			      ]
-			    },
-			    "transaction_listing_has_date": {
-			      "Binding": {
-			        "ConceptualEntity": "TransactionListing"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "transaction_listing": {
-			          "Target": {
-			            "Entity": "transaction_listing"
-			          }
-			        },
-			        "transaction_listing.date": {
-			          "Target": {
-			            "Entity": "transaction_listing.date"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "transaction_listing"
-			            },
-			            "Object": {
-			              "Role": "transaction_listing.date"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "transaction_listing_have_dates"
-			        }
-			      ]
-			    },
-			    "transaction_listing_has_description": {
-			      "Binding": {
-			        "ConceptualEntity": "TransactionListing"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "transaction_listing": {
-			          "Target": {
-			            "Entity": "transaction_listing"
-			          }
-			        },
-			        "transaction_listing.description": {
-			          "Target": {
-			            "Entity": "transaction_listing.description"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "transaction_listing"
-			            },
-			            "Object": {
-			              "Role": "transaction_listing.description"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "transaction_listing_have_descriptions"
-			        }
-			      ]
-			    },
-			    "transaction_listing_has_amount": {
-			      "Binding": {
-			        "ConceptualEntity": "TransactionListing"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "transaction_listing": {
-			          "Target": {
-			            "Entity": "transaction_listing"
-			          }
-			        },
-			        "transaction_listing.amount": {
-			          "Target": {
-			            "Entity": "transaction_listing.amount"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "transaction_listing"
-			            },
-			            "Object": {
-			              "Role": "transaction_listing.amount"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "transaction_listing_have_amounts"
-			        }
-			      ]
-			    },
-			    "transaction_listing_has_total_expense": {
-			      "Binding": {
-			        "ConceptualEntity": "TransactionListing"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "transaction_listing": {
-			          "Target": {
-			            "Entity": "transaction_listing"
-			          }
-			        },
-			        "transaction_listing.total_expense": {
-			          "Target": {
-			            "Entity": "transaction_listing.total_expense"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "transaction_listing"
-			            },
-			            "Object": {
-			              "Role": "transaction_listing.total_expense"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "transaction_listing_have_total_expense"
-			        }
-			      ]
-			    },
-			    "transaction_listing_has_total_income": {
-			      "Binding": {
-			        "ConceptualEntity": "TransactionListing"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "transaction_listing": {
-			          "Target": {
-			            "Entity": "transaction_listing"
-			          }
-			        },
-			        "transaction_listing.total_income": {
-			          "Target": {
-			            "Entity": "transaction_listing.total_income"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "transaction_listing"
-			            },
-			            "Object": {
-			              "Role": "transaction_listing.total_income"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "transaction_listing_have_total_income"
-			        }
-			      ]
-			    },
-			    "transaction_listing_has_wants_": {
-			      "Binding": {
-			        "ConceptualEntity": "TransactionListing"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "transaction_listing": {
-			          "Target": {
-			            "Entity": "transaction_listing"
-			          }
-			        },
-			        "transaction_listing.wants_": {
-			          "Target": {
-			            "Entity": "transaction_listing.wants_"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "transaction_listing"
-			            },
-			            "Object": {
-			              "Role": "transaction_listing.wants_"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "transaction_listing_have_wants_"
-			        }
-			      ]
-			    },
-			    "transaction_listing_has_needs_": {
-			      "Binding": {
-			        "ConceptualEntity": "TransactionListing"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "transaction_listing": {
-			          "Target": {
-			            "Entity": "transaction_listing"
-			          }
-			        },
-			        "transaction_listing.needs_": {
-			          "Target": {
-			            "Entity": "transaction_listing.needs_"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "transaction_listing"
-			            },
-			            "Object": {
-			              "Role": "transaction_listing.needs_"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "transaction_listing_have_needs_"
-			        }
-			      ]
-			    },
-			    "transaction_listing_has_investments_": {
-			      "Binding": {
-			        "ConceptualEntity": "TransactionListing"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "transaction_listing": {
-			          "Target": {
-			            "Entity": "transaction_listing"
-			          }
-			        },
-			        "transaction_listing.investments_": {
-			          "Target": {
-			            "Entity": "transaction_listing.investments_"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "transaction_listing"
-			            },
-			            "Object": {
-			              "Role": "transaction_listing.investments_"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "transaction_listing_have_investments_"
-			        }
-			      ]
-			    },
-			    "transaction_listing_has_expense_amount": {
-			      "Binding": {
-			        "ConceptualEntity": "TransactionListing"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "transaction_listing": {
-			          "Target": {
-			            "Entity": "transaction_listing"
-			          }
-			        },
-			        "transaction_listing.expense_amount": {
-			          "Target": {
-			            "Entity": "transaction_listing.expense_amount"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "transaction_listing"
-			            },
-			            "Object": {
-			              "Role": "transaction_listing.expense_amount"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "transaction_listing_have_expense_amount"
-			        }
-			      ]
-			    },
-			    "transaction_listing_has_net_cash_flow": {
-			      "Binding": {
-			        "ConceptualEntity": "TransactionListing"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "transaction_listing": {
-			          "Target": {
-			            "Entity": "transaction_listing"
-			          }
-			        },
-			        "transaction_listing.net_cash_flow": {
-			          "Target": {
-			            "Entity": "transaction_listing.net_cash_flow"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "transaction_listing"
-			            },
-			            "Object": {
-			              "Role": "transaction_listing.net_cash_flow"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "transaction_listing_have_net_cash_flow"
-			        }
-			      ]
-			    },
-			    "transaction_listing_has_savings_rate": {
-			      "Binding": {
-			        "ConceptualEntity": "TransactionListing"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "transaction_listing": {
-			          "Target": {
-			            "Entity": "transaction_listing"
-			          }
-			        },
-			        "transaction_listing.savings_rate": {
-			          "Target": {
-			            "Entity": "transaction_listing.savings_rate"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "transaction_listing"
-			            },
-			            "Object": {
-			              "Role": "transaction_listing.savings_rate"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "transaction_listing_have_savings_rate"
-			        }
-			      ]
-			    },
-			    "transaction_listing_has_net_cash_flow_previous_month": {
-			      "Binding": {
-			        "ConceptualEntity": "TransactionListing"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "transaction_listing": {
-			          "Target": {
-			            "Entity": "transaction_listing"
-			          }
-			        },
-			        "transaction_listing.net_cash_flow_previous_month": {
-			          "Target": {
-			            "Entity": "transaction_listing.net_cash_flow_previous_month"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "transaction_listing"
-			            },
-			            "Object": {
-			              "Role": "transaction_listing.net_cash_flow_previous_month"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "transaction_listing_have_net_cash_flow_previous_month"
-			        }
-			      ]
-			    },
-			    "transaction_listing_has_net_cash_flow_change": {
-			      "Binding": {
-			        "ConceptualEntity": "TransactionListing"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "transaction_listing": {
-			          "Target": {
-			            "Entity": "transaction_listing"
-			          }
-			        },
-			        "transaction_listing.net_cash_flow_change": {
-			          "Target": {
-			            "Entity": "transaction_listing.net_cash_flow_change"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "transaction_listing"
-			            },
-			            "Object": {
-			              "Role": "transaction_listing.net_cash_flow_change"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "transaction_listing_have_net_cash_flow_change"
-			        }
-			      ]
-			    },
-			    "transaction_category_dim_has_financial_type": {
+			    "transaction_category_dim_category_hierarchy_category_in_transaction_category_dim_category_hierarchy_financial_type": {
 			      "Binding": {
 			        "ConceptualEntity": "TransactionCategory_dim"
 			      },
 			      "State": "Generated",
 			      "Roles": {
-			        "transaction_category_dim": {
+			        "transaction_category_dim.category_hierarchy.category": {
 			          "Target": {
-			            "Entity": "transaction_category_dim"
-			          }
-			        },
-			        "transaction_category_dim.financial_type": {
-			          "Target": {
-			            "Entity": "transaction_category_dim.financial_type"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "transaction_category_dim"
-			            },
-			            "Object": {
-			              "Role": "transaction_category_dim.financial_type"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "transaction_category_dims_have_financial_types"
-			        }
-			      ]
-			    },
-			    "transaction_category_dim_has_category": {
-			      "Binding": {
-			        "ConceptualEntity": "TransactionCategory_dim"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "transaction_category_dim": {
-			          "Target": {
-			            "Entity": "transaction_category_dim"
-			          }
-			        },
-			        "transaction_category_dim.category": {
-			          "Target": {
-			            "Entity": "transaction_category_dim.category"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "transaction_category_dim"
-			            },
-			            "Object": {
-			              "Role": "transaction_category_dim.category"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "transaction_category_dims_have_categories"
-			        }
-			      ]
-			    },
-			    "transaction_category_dim_has_sub_category": {
-			      "Binding": {
-			        "ConceptualEntity": "TransactionCategory_dim"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "transaction_category_dim": {
-			          "Target": {
-			            "Entity": "transaction_category_dim"
-			          }
-			        },
-			        "transaction_category_dim.sub_category": {
-			          "Target": {
-			            "Entity": "transaction_category_dim.sub_category"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "transaction_category_dim"
-			            },
-			            "Object": {
-			              "Role": "transaction_category_dim.sub_category"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "transaction_category_dims_have_sub_categories"
-			        }
-			      ]
-			    },
-			    "transaction_category_dim_has_allocation_type": {
-			      "Binding": {
-			        "ConceptualEntity": "TransactionCategory_dim"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "transaction_category_dim": {
-			          "Target": {
-			            "Entity": "transaction_category_dim"
-			          }
-			        },
-			        "transaction_category_dim.allocation_type": {
-			          "Target": {
-			            "Entity": "transaction_category_dim.allocation_type"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "transaction_category_dim"
-			            },
-			            "Object": {
-			              "Role": "transaction_category_dim.allocation_type"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "transaction_category_dims_have_allocation_types"
-			        }
-			      ]
-			    },
-			    "transaction_category_dim_has_category_hierarchy": {
-			      "Binding": {
-			        "ConceptualEntity": "TransactionCategory_dim"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "transaction_category_dim": {
-			          "Target": {
-			            "Entity": "transaction_category_dim"
-			          }
-			        },
-			        "transaction_category_dim.category_hierarchy": {
-			          "Target": {
-			            "Entity": "transaction_category_dim.category_hierarchy"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "transaction_category_dim"
-			            },
-			            "Object": {
-			              "Role": "transaction_category_dim.category_hierarchy"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "transaction_category_dims_have_category_hierarchies"
-			        }
-			      ]
-			    },
-			    "date_calendar_has_PK_date": {
-			      "Binding": {
-			        "ConceptualEntity": "DateCalendar"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "date_calendar": {
-			          "Target": {
-			            "Entity": "date_calendar"
-			          }
-			        },
-			        "date_calendar.PK_date": {
-			          "Target": {
-			            "Entity": "date_calendar.PK_date"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "date_calendar"
-			            },
-			            "Object": {
-			              "Role": "date_calendar.PK_date"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_calendars_have_PK_dates"
-			        }
-			      ]
-			    },
-			    "date_calendar_has_year": {
-			      "Binding": {
-			        "ConceptualEntity": "DateCalendar"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "date_calendar": {
-			          "Target": {
-			            "Entity": "date_calendar"
-			          }
-			        },
-			        "date_calendar.year": {
-			          "Target": {
-			            "Entity": "date_calendar.year"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "date_calendar"
-			            },
-			            "Object": {
-			              "Role": "date_calendar.year"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_calendars_have_years"
-			        }
-			      ]
-			    },
-			    "date_calendar_has_quarterof_year": {
-			      "Binding": {
-			        "ConceptualEntity": "DateCalendar"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "date_calendar": {
-			          "Target": {
-			            "Entity": "date_calendar"
-			          }
-			        },
-			        "date_calendar.quarterof_year": {
-			          "Target": {
-			            "Entity": "date_calendar.quarterof_year"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "date_calendar"
-			            },
-			            "Object": {
-			              "Role": "date_calendar.quarterof_year"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_calendars_have_quarterof_years"
-			        }
-			      ]
-			    },
-			    "date_calendar_has_quarter_name_of_year": {
-			      "Binding": {
-			        "ConceptualEntity": "DateCalendar"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "date_calendar": {
-			          "Target": {
-			            "Entity": "date_calendar"
-			          }
-			        },
-			        "date_calendar.quarter_name_of_year": {
-			          "Target": {
-			            "Entity": "date_calendar.quarter_name_of_year"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "date_calendar"
-			            },
-			            "Object": {
-			              "Role": "date_calendar.quarter_name_of_year"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_calendars_have_quarter_name_of_year"
-			        }
-			      ]
-			    },
-			    "date_calendar_has_month_name": {
-			      "Binding": {
-			        "ConceptualEntity": "DateCalendar"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "date_calendar": {
-			          "Target": {
-			            "Entity": "date_calendar"
-			          }
-			        },
-			        "date_calendar.month_name": {
-			          "Target": {
-			            "Entity": "date_calendar.month_name"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "date_calendar"
-			            },
-			            "Object": {
-			              "Role": "date_calendar.month_name"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_calendars_have_month_names"
-			        }
-			      ]
-			    },
-			    "date_calendar_has_month_name_short": {
-			      "Binding": {
-			        "ConceptualEntity": "DateCalendar"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "date_calendar": {
-			          "Target": {
-			            "Entity": "date_calendar"
-			          }
-			        },
-			        "date_calendar.month_name_short": {
-			          "Target": {
-			            "Entity": "date_calendar.month_name_short"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "date_calendar"
-			            },
-			            "Object": {
-			              "Role": "date_calendar.month_name_short"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_calendars_have_month_name_shorts"
-			        }
-			      ]
-			    },
-			    "date_calendar_has_month_with_year": {
-			      "Binding": {
-			        "ConceptualEntity": "DateCalendar"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "date_calendar": {
-			          "Target": {
-			            "Entity": "date_calendar"
-			          }
-			        },
-			        "date_calendar.month_with_year": {
-			          "Target": {
-			            "Entity": "date_calendar.month_with_year"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "date_calendar"
-			            },
-			            "Object": {
-			              "Role": "date_calendar.month_with_year"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_calendars_have_month_with_year"
-			        }
-			      ]
-			    },
-			    "date_calendar_has_week_num_of_year": {
-			      "Binding": {
-			        "ConceptualEntity": "DateCalendar"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "date_calendar": {
-			          "Target": {
-			            "Entity": "date_calendar"
-			          }
-			        },
-			        "date_calendar.week_num_of_year": {
-			          "Target": {
-			            "Entity": "date_calendar.week_num_of_year"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "date_calendar"
-			            },
-			            "Object": {
-			              "Role": "date_calendar.week_num_of_year"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_calendars_have_week_num_of_year"
-			        }
-			      ]
-			    },
-			    "date_calendar_has_week_name_of_year": {
-			      "Binding": {
-			        "ConceptualEntity": "DateCalendar"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "date_calendar": {
-			          "Target": {
-			            "Entity": "date_calendar"
-			          }
-			        },
-			        "date_calendar.week_name_of_year": {
-			          "Target": {
-			            "Entity": "date_calendar.week_name_of_year"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "date_calendar"
-			            },
-			            "Object": {
-			              "Role": "date_calendar.week_name_of_year"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_calendars_have_week_name_of_year"
-			        }
-			      ]
-			    },
-			    "date_calendar_has_week_with_year": {
-			      "Binding": {
-			        "ConceptualEntity": "DateCalendar"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "date_calendar": {
-			          "Target": {
-			            "Entity": "date_calendar"
-			          }
-			        },
-			        "date_calendar.week_with_year": {
-			          "Target": {
-			            "Entity": "date_calendar.week_with_year"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "date_calendar"
-			            },
-			            "Object": {
-			              "Role": "date_calendar.week_with_year"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_calendars_have_week_with_year"
-			        }
-			      ]
-			    },
-			    "date_calendar_has_day_nameof_week": {
-			      "Binding": {
-			        "ConceptualEntity": "DateCalendar"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "date_calendar": {
-			          "Target": {
-			            "Entity": "date_calendar"
-			          }
-			        },
-			        "date_calendar.day_nameof_week": {
-			          "Target": {
-			            "Entity": "date_calendar.day_nameof_week"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "date_calendar"
-			            },
-			            "Object": {
-			              "Role": "date_calendar.day_nameof_week"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_calendars_have_day_nameof_weeks"
-			        }
-			      ]
-			    },
-			    "owner_dim_has_source": {
-			      "Binding": {
-			        "ConceptualEntity": "Owner_dim"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "owner_dim": {
-			          "Target": {
-			            "Entity": "owner_dim"
-			          }
-			        },
-			        "owner_dim.source": {
-			          "Target": {
-			            "Entity": "owner_dim.source"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "owner_dim"
-			            },
-			            "Object": {
-			              "Role": "owner_dim.source"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "owner_dims_have_sources"
-			        }
-			      ]
-			    },
-			    "refresh_info_has_last_refreshed": {
-			      "Binding": {
-			        "ConceptualEntity": "Refresh Info"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "refresh_info": {
-			          "Target": {
-			            "Entity": "refresh_info"
-			          }
-			        },
-			        "refresh_info.last_refreshed": {
-			          "Target": {
-			            "Entity": "refresh_info.last_refreshed"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "refresh_info"
-			            },
-			            "Object": {
-			              "Role": "refresh_info.last_refreshed"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "refresh_info_have_last_refreshed"
-			        }
-			      ]
-			    },
-			    "transaction_listing_has_transaction_category_dim": {
-			      "Binding": {
-			        "ConceptualEntity": "TransactionListing"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "transaction_listing": {
-			          "Target": {
-			            "Entity": "transaction_listing"
-			          }
-			        },
-			        "transaction_category_dim": {
-			          "Target": {
-			            "Entity": "transaction_category_dim"
-			          },
-			          "Nouns": [
-			            {
-			              "sub category": {
-			                "State": "Generated"
-			              }
-			            }
-			          ]
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "transaction_listing"
-			            },
-			            "Object": {
-			              "Role": "transaction_category_dim"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "transaction_listing_have_transaction_category_dims"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "transaction_category_dim"
-			            },
-			            "Object": {
-			              "Role": "transaction_listing"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "transaction_category_dims_have_transaction_listing"
-			        }
-			      ]
-			    },
-			    "transaction_listing_has_date_calendar": {
-			      "Binding": {
-			        "ConceptualEntity": "TransactionListing"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "transaction_listing": {
-			          "Target": {
-			            "Entity": "transaction_listing"
-			          }
-			        },
-			        "date_calendar": {
-			          "Target": {
-			            "Entity": "date_calendar"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "transaction_listing"
-			            },
-			            "Object": {
-			              "Role": "date_calendar"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "transaction_listing_have_date_calendars"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "date_calendar"
-			            },
-			            "Object": {
-			              "Role": "transaction_listing"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_calendars_have_transaction_listing"
-			        }
-			      ]
-			    },
-			    "transaction_listing_has_owner_dim": {
-			      "Binding": {
-			        "ConceptualEntity": "TransactionListing"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "transaction_listing": {
-			          "Target": {
-			            "Entity": "transaction_listing"
-			          }
-			        },
-			        "owner_dim": {
-			          "Target": {
-			            "Entity": "owner_dim"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "transaction_listing"
-			            },
-			            "Object": {
-			              "Role": "owner_dim"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "transaction_listing_have_owner_dims"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "owner_dim"
-			            },
-			            "Object": {
-			              "Role": "transaction_listing"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "owner_dims_have_transaction_listing"
-			        }
-			      ]
-			    },
-			    "transaction_category_dim_category_hierarchy_has_financial_type": {
-			      "Binding": {
-			        "ConceptualEntity": "TransactionCategory_dim"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "transaction_category_dim.category_hierarchy": {
-			          "Target": {
-			            "Entity": "transaction_category_dim.category_hierarchy"
+			            "Entity": "transaction_category_dim.category_hierarchy.category"
 			          }
 			        },
 			        "transaction_category_dim.category_hierarchy.financial_type": {
@@ -5375,104 +4076,25 @@ cultureInfo en-US
 			      },
 			      "Phrasings": [
 			        {
-			          "Attribute": {
+			          "Preposition": {
 			            "Subject": {
-			              "Role": "transaction_category_dim.category_hierarchy"
+			              "Role": "transaction_category_dim.category_hierarchy.category"
 			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
 			            "Object": {
 			              "Role": "transaction_category_dim.category_hierarchy.financial_type"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "category_hierarchies_have_financial_types"
-			        }
-			      ]
-			    },
-			    "transaction_category_dim_category_hierarchy_has_category": {
-			      "Binding": {
-			        "ConceptualEntity": "TransactionCategory_dim"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "transaction_category_dim.category_hierarchy": {
-			          "Target": {
-			            "Entity": "transaction_category_dim.category_hierarchy"
-			          }
+			          "ID": "categories_are_in_financial_types"
 			        },
-			        "transaction_category_dim.category_hierarchy.category": {
-			          "Target": {
-			            "Entity": "transaction_category_dim.category_hierarchy.category"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "transaction_category_dim.category_hierarchy"
-			            },
-			            "Object": {
-			              "Role": "transaction_category_dim.category_hierarchy.category"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "category_hierarchies_have_categories"
-			        }
-			      ]
-			    },
-			    "transaction_category_dim_category_hierarchy_has_sub_category": {
-			      "Binding": {
-			        "ConceptualEntity": "TransactionCategory_dim"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "transaction_category_dim.category_hierarchy": {
-			          "Target": {
-			            "Entity": "transaction_category_dim.category_hierarchy"
-			          }
-			        },
-			        "transaction_category_dim.category_hierarchy.sub_category": {
-			          "Target": {
-			            "Entity": "transaction_category_dim.category_hierarchy.sub_category"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "transaction_category_dim.category_hierarchy"
-			            },
-			            "Object": {
-			              "Role": "transaction_category_dim.category_hierarchy.sub_category"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "category_hierarchies_have_sub_categories"
-			        }
-			      ]
-			    },
-			    "transaction_category_dim_category_hierarchy_financial_type_has_transaction_category_dim_category_hierarchy_category": {
-			      "Binding": {
-			        "ConceptualEntity": "TransactionCategory_dim"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "transaction_category_dim.category_hierarchy.financial_type": {
-			          "Target": {
-			            "Entity": "transaction_category_dim.category_hierarchy.financial_type"
-			          }
-			        },
-			        "transaction_category_dim.category_hierarchy.category": {
-			          "Target": {
-			            "Entity": "transaction_category_dim.category_hierarchy.category"
-			          }
-			        }
-			      },
-			      "Phrasings": [
 			        {
 			          "Attribute": {
 			            "Subject": {
@@ -5498,26 +4120,6 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "categories_have_financial_types"
-			        },
-			        {
-			          "Preposition": {
-			            "Subject": {
-			              "Role": "transaction_category_dim.category_hierarchy.category"
-			            },
-			            "Prepositions": [
-			              {
-			                "in": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ],
-			            "Object": {
-			              "Role": "transaction_category_dim.category_hierarchy.financial_type"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "categories_are_in_financial_types"
 			        }
 			      ]
 			    },
@@ -5584,6 +4186,1304 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "sub_categories_are_in_categories"
+			        }
+			      ]
+			    },
+			    "transaction_category_dim_category_hierarchy_has_sub_category": {
+			      "Binding": {
+			        "ConceptualEntity": "TransactionCategory_dim"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "transaction_category_dim.category_hierarchy": {
+			          "Target": {
+			            "Entity": "transaction_category_dim.category_hierarchy"
+			          }
+			        },
+			        "transaction_category_dim.category_hierarchy.sub_category": {
+			          "Target": {
+			            "Entity": "transaction_category_dim.category_hierarchy.sub_category"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transaction_category_dim.category_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "transaction_category_dim.category_hierarchy.sub_category"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "category_hierarchies_have_sub_categories"
+			        }
+			      ]
+			    },
+			    "transaction_category_dim_category_hierarchy_has_category": {
+			      "Binding": {
+			        "ConceptualEntity": "TransactionCategory_dim"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "transaction_category_dim.category_hierarchy": {
+			          "Target": {
+			            "Entity": "transaction_category_dim.category_hierarchy"
+			          }
+			        },
+			        "transaction_category_dim.category_hierarchy.category": {
+			          "Target": {
+			            "Entity": "transaction_category_dim.category_hierarchy.category"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transaction_category_dim.category_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "transaction_category_dim.category_hierarchy.category"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "category_hierarchies_have_categories"
+			        }
+			      ]
+			    },
+			    "transaction_category_dim_category_hierarchy_has_financial_type": {
+			      "Binding": {
+			        "ConceptualEntity": "TransactionCategory_dim"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "transaction_category_dim.category_hierarchy": {
+			          "Target": {
+			            "Entity": "transaction_category_dim.category_hierarchy"
+			          }
+			        },
+			        "transaction_category_dim.category_hierarchy.financial_type": {
+			          "Target": {
+			            "Entity": "transaction_category_dim.category_hierarchy.financial_type"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transaction_category_dim.category_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "transaction_category_dim.category_hierarchy.financial_type"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "category_hierarchies_have_financial_types"
+			        }
+			      ]
+			    },
+			    "transaction_listing_has_owner_dim": {
+			      "Binding": {
+			        "ConceptualEntity": "TransactionListing"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "transaction_listing": {
+			          "Target": {
+			            "Entity": "transaction_listing"
+			          }
+			        },
+			        "owner_dim": {
+			          "Target": {
+			            "Entity": "owner_dim"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transaction_listing"
+			            },
+			            "Object": {
+			              "Role": "owner_dim"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "transaction_listing_have_owner_dims"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "owner_dim"
+			            },
+			            "Object": {
+			              "Role": "transaction_listing"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "owner_dims_have_transaction_listing"
+			        }
+			      ]
+			    },
+			    "transaction_listing_has_date_calendar": {
+			      "Binding": {
+			        "ConceptualEntity": "TransactionListing"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "transaction_listing": {
+			          "Target": {
+			            "Entity": "transaction_listing"
+			          }
+			        },
+			        "date_calendar": {
+			          "Target": {
+			            "Entity": "date_calendar"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transaction_listing"
+			            },
+			            "Object": {
+			              "Role": "date_calendar"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "transaction_listing_have_date_calendars"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "date_calendar"
+			            },
+			            "Object": {
+			              "Role": "transaction_listing"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_calendars_have_transaction_listing"
+			        }
+			      ]
+			    },
+			    "transaction_listing_has_transaction_category_dim": {
+			      "Binding": {
+			        "ConceptualEntity": "TransactionListing"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "transaction_listing": {
+			          "Target": {
+			            "Entity": "transaction_listing"
+			          }
+			        },
+			        "transaction_category_dim": {
+			          "Target": {
+			            "Entity": "transaction_category_dim"
+			          },
+			          "Nouns": [
+			            {
+			              "sub category": {
+			                "State": "Generated"
+			              }
+			            }
+			          ]
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transaction_listing"
+			            },
+			            "Object": {
+			              "Role": "transaction_category_dim"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "transaction_listing_have_transaction_category_dims"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transaction_category_dim"
+			            },
+			            "Object": {
+			              "Role": "transaction_listing"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "transaction_category_dims_have_transaction_listing"
+			        }
+			      ]
+			    },
+			    "refresh_info_has_last_refreshed": {
+			      "Binding": {
+			        "ConceptualEntity": "Refresh Info"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "refresh_info": {
+			          "Target": {
+			            "Entity": "refresh_info"
+			          }
+			        },
+			        "refresh_info.last_refreshed": {
+			          "Target": {
+			            "Entity": "refresh_info.last_refreshed"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "refresh_info"
+			            },
+			            "Object": {
+			              "Role": "refresh_info.last_refreshed"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "refresh_info_have_last_refreshed"
+			        }
+			      ]
+			    },
+			    "owner_dim_has_source": {
+			      "Binding": {
+			        "ConceptualEntity": "Owner_dim"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "owner_dim": {
+			          "Target": {
+			            "Entity": "owner_dim"
+			          }
+			        },
+			        "owner_dim.source": {
+			          "Target": {
+			            "Entity": "owner_dim.source"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "owner_dim"
+			            },
+			            "Object": {
+			              "Role": "owner_dim.source"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "owner_dims_have_sources"
+			        }
+			      ]
+			    },
+			    "owner_dim_has_owner": {
+			      "Binding": {
+			        "ConceptualEntity": "Owner_dim"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "owner_dim": {
+			          "Target": {
+			            "Entity": "owner_dim"
+			          }
+			        },
+			        "owner_dim.owner": {
+			          "Target": {
+			            "Entity": "owner_dim.owner"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "owner_dim"
+			            },
+			            "Object": {
+			              "Role": "owner_dim.owner"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "owner_dims_have_owners"
+			        },
+			        {
+			          "Verb": {
+			            "Subject": {
+			              "Role": "owner_dim.owner"
+			            },
+			            "Verbs": [
+			              {
+			                "own": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "owner_dim"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.75,
+			          "ID": "owners_own_owner_dims"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "owner_dim.owner"
+			            },
+			            "Object": {
+			              "Role": "owner_dim"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "owners_have_owner_dims"
+			        }
+			      ]
+			    },
+			    "date_calendar_has_day_nameof_week": {
+			      "Binding": {
+			        "ConceptualEntity": "DateCalendar"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "date_calendar": {
+			          "Target": {
+			            "Entity": "date_calendar"
+			          }
+			        },
+			        "date_calendar.day_nameof_week": {
+			          "Target": {
+			            "Entity": "date_calendar.day_nameof_week"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "date_calendar"
+			            },
+			            "Object": {
+			              "Role": "date_calendar.day_nameof_week"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_calendars_have_day_nameof_weeks"
+			        }
+			      ]
+			    },
+			    "date_calendar_has_week_with_year": {
+			      "Binding": {
+			        "ConceptualEntity": "DateCalendar"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "date_calendar": {
+			          "Target": {
+			            "Entity": "date_calendar"
+			          }
+			        },
+			        "date_calendar.week_with_year": {
+			          "Target": {
+			            "Entity": "date_calendar.week_with_year"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "date_calendar"
+			            },
+			            "Object": {
+			              "Role": "date_calendar.week_with_year"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_calendars_have_week_with_year"
+			        }
+			      ]
+			    },
+			    "date_calendar_has_week_name_of_year": {
+			      "Binding": {
+			        "ConceptualEntity": "DateCalendar"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "date_calendar": {
+			          "Target": {
+			            "Entity": "date_calendar"
+			          }
+			        },
+			        "date_calendar.week_name_of_year": {
+			          "Target": {
+			            "Entity": "date_calendar.week_name_of_year"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "date_calendar"
+			            },
+			            "Object": {
+			              "Role": "date_calendar.week_name_of_year"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_calendars_have_week_name_of_year"
+			        }
+			      ]
+			    },
+			    "date_calendar_has_week_num_of_year": {
+			      "Binding": {
+			        "ConceptualEntity": "DateCalendar"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "date_calendar": {
+			          "Target": {
+			            "Entity": "date_calendar"
+			          }
+			        },
+			        "date_calendar.week_num_of_year": {
+			          "Target": {
+			            "Entity": "date_calendar.week_num_of_year"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "date_calendar"
+			            },
+			            "Object": {
+			              "Role": "date_calendar.week_num_of_year"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_calendars_have_week_num_of_year"
+			        }
+			      ]
+			    },
+			    "date_calendar_has_month_with_year": {
+			      "Binding": {
+			        "ConceptualEntity": "DateCalendar"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "date_calendar": {
+			          "Target": {
+			            "Entity": "date_calendar"
+			          }
+			        },
+			        "date_calendar.month_with_year": {
+			          "Target": {
+			            "Entity": "date_calendar.month_with_year"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "date_calendar"
+			            },
+			            "Object": {
+			              "Role": "date_calendar.month_with_year"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_calendars_have_month_with_year"
+			        }
+			      ]
+			    },
+			    "date_calendar_has_month_name_short": {
+			      "Binding": {
+			        "ConceptualEntity": "DateCalendar"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "date_calendar": {
+			          "Target": {
+			            "Entity": "date_calendar"
+			          }
+			        },
+			        "date_calendar.month_name_short": {
+			          "Target": {
+			            "Entity": "date_calendar.month_name_short"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "date_calendar"
+			            },
+			            "Object": {
+			              "Role": "date_calendar.month_name_short"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_calendars_have_month_name_shorts"
+			        }
+			      ]
+			    },
+			    "date_calendar_has_month_name": {
+			      "Binding": {
+			        "ConceptualEntity": "DateCalendar"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "date_calendar": {
+			          "Target": {
+			            "Entity": "date_calendar"
+			          }
+			        },
+			        "date_calendar.month_name": {
+			          "Target": {
+			            "Entity": "date_calendar.month_name"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "date_calendar"
+			            },
+			            "Object": {
+			              "Role": "date_calendar.month_name"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_calendars_have_month_names"
+			        }
+			      ]
+			    },
+			    "date_calendar_has_quarter_with_year": {
+			      "Binding": {
+			        "ConceptualEntity": "DateCalendar"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "date_calendar": {
+			          "Target": {
+			            "Entity": "date_calendar"
+			          }
+			        },
+			        "date_calendar.quarter_with_year": {
+			          "Target": {
+			            "Entity": "date_calendar.quarter_with_year"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "date_calendar"
+			            },
+			            "Object": {
+			              "Role": "date_calendar.quarter_with_year"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_calendars_have_quarter_with_year"
+			        },
+			        {
+			          "Verb": {
+			            "Subject": {
+			              "Role": "date_calendar"
+			            },
+			            "Verbs": [
+			              {
+			                "quarter": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "PrepositionalPhrases": [
+			              {
+			                "Prepositions": [
+			                  {
+			                    "with": {
+			                      "State": "Generated"
+			                    }
+			                  }
+			                ],
+			                "Object": {
+			                  "Role": "date_calendar.quarter_with_year"
+			                }
+			              }
+			            ]
+			          },
+			          "State": "Generated",
+			          "Weight": 0.95,
+			          "ID": "date_calendars_quarter_with_quarter_with_year"
+			        }
+			      ]
+			    },
+			    "date_calendar_has_quarter_name_of_year": {
+			      "Binding": {
+			        "ConceptualEntity": "DateCalendar"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "date_calendar": {
+			          "Target": {
+			            "Entity": "date_calendar"
+			          }
+			        },
+			        "date_calendar.quarter_name_of_year": {
+			          "Target": {
+			            "Entity": "date_calendar.quarter_name_of_year"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "date_calendar"
+			            },
+			            "Object": {
+			              "Role": "date_calendar.quarter_name_of_year"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_calendars_have_quarter_name_of_year"
+			        }
+			      ]
+			    },
+			    "date_calendar_has_quarterof_year": {
+			      "Binding": {
+			        "ConceptualEntity": "DateCalendar"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "date_calendar": {
+			          "Target": {
+			            "Entity": "date_calendar"
+			          }
+			        },
+			        "date_calendar.quarterof_year": {
+			          "Target": {
+			            "Entity": "date_calendar.quarterof_year"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "date_calendar"
+			            },
+			            "Object": {
+			              "Role": "date_calendar.quarterof_year"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_calendars_have_quarterof_years"
+			        }
+			      ]
+			    },
+			    "date_calendar_has_year": {
+			      "Binding": {
+			        "ConceptualEntity": "DateCalendar"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "date_calendar": {
+			          "Target": {
+			            "Entity": "date_calendar"
+			          }
+			        },
+			        "date_calendar.year": {
+			          "Target": {
+			            "Entity": "date_calendar.year"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "date_calendar"
+			            },
+			            "Object": {
+			              "Role": "date_calendar.year"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_calendars_have_years"
+			        }
+			      ]
+			    },
+			    "date_calendar_has_PK_date": {
+			      "Binding": {
+			        "ConceptualEntity": "DateCalendar"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "date_calendar": {
+			          "Target": {
+			            "Entity": "date_calendar"
+			          }
+			        },
+			        "date_calendar.PK_date": {
+			          "Target": {
+			            "Entity": "date_calendar.PK_date"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "date_calendar"
+			            },
+			            "Object": {
+			              "Role": "date_calendar.PK_date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_calendars_have_PK_dates"
+			        }
+			      ]
+			    },
+			    "transaction_category_dim_has_category_hierarchy": {
+			      "Binding": {
+			        "ConceptualEntity": "TransactionCategory_dim"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "transaction_category_dim": {
+			          "Target": {
+			            "Entity": "transaction_category_dim"
+			          }
+			        },
+			        "transaction_category_dim.category_hierarchy": {
+			          "Target": {
+			            "Entity": "transaction_category_dim.category_hierarchy"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transaction_category_dim"
+			            },
+			            "Object": {
+			              "Role": "transaction_category_dim.category_hierarchy"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "transaction_category_dims_have_category_hierarchies"
+			        }
+			      ]
+			    },
+			    "transaction_category_dim_has_allocation_type": {
+			      "Binding": {
+			        "ConceptualEntity": "TransactionCategory_dim"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "transaction_category_dim": {
+			          "Target": {
+			            "Entity": "transaction_category_dim"
+			          }
+			        },
+			        "transaction_category_dim.allocation_type": {
+			          "Target": {
+			            "Entity": "transaction_category_dim.allocation_type"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transaction_category_dim"
+			            },
+			            "Object": {
+			              "Role": "transaction_category_dim.allocation_type"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "transaction_category_dims_have_allocation_types"
+			        }
+			      ]
+			    },
+			    "transaction_listing_has_net_cash_flow_change": {
+			      "Binding": {
+			        "ConceptualEntity": "TransactionListing"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "transaction_listing": {
+			          "Target": {
+			            "Entity": "transaction_listing"
+			          }
+			        },
+			        "transaction_listing.net_cash_flow_change": {
+			          "Target": {
+			            "Entity": "transaction_listing.net_cash_flow_change"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transaction_listing"
+			            },
+			            "Object": {
+			              "Role": "transaction_listing.net_cash_flow_change"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "transaction_listing_have_net_cash_flow_change"
+			        }
+			      ]
+			    },
+			    "transaction_listing_has_net_cash_flow_previous_month": {
+			      "Binding": {
+			        "ConceptualEntity": "TransactionListing"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "transaction_listing": {
+			          "Target": {
+			            "Entity": "transaction_listing"
+			          }
+			        },
+			        "transaction_listing.net_cash_flow_previous_month": {
+			          "Target": {
+			            "Entity": "transaction_listing.net_cash_flow_previous_month"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transaction_listing"
+			            },
+			            "Object": {
+			              "Role": "transaction_listing.net_cash_flow_previous_month"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "transaction_listing_have_net_cash_flow_previous_month"
+			        }
+			      ]
+			    },
+			    "transaction_listing_has_savings_rate": {
+			      "Binding": {
+			        "ConceptualEntity": "TransactionListing"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "transaction_listing": {
+			          "Target": {
+			            "Entity": "transaction_listing"
+			          }
+			        },
+			        "transaction_listing.savings_rate": {
+			          "Target": {
+			            "Entity": "transaction_listing.savings_rate"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transaction_listing"
+			            },
+			            "Object": {
+			              "Role": "transaction_listing.savings_rate"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "transaction_listing_have_savings_rate"
+			        }
+			      ]
+			    },
+			    "transaction_listing_has_net_cash_flow": {
+			      "Binding": {
+			        "ConceptualEntity": "TransactionListing"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "transaction_listing": {
+			          "Target": {
+			            "Entity": "transaction_listing"
+			          }
+			        },
+			        "transaction_listing.net_cash_flow": {
+			          "Target": {
+			            "Entity": "transaction_listing.net_cash_flow"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transaction_listing"
+			            },
+			            "Object": {
+			              "Role": "transaction_listing.net_cash_flow"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "transaction_listing_have_net_cash_flow"
+			        }
+			      ]
+			    },
+			    "transaction_listing_has_expense_amount": {
+			      "Binding": {
+			        "ConceptualEntity": "TransactionListing"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "transaction_listing": {
+			          "Target": {
+			            "Entity": "transaction_listing"
+			          }
+			        },
+			        "transaction_listing.expense_amount": {
+			          "Target": {
+			            "Entity": "transaction_listing.expense_amount"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transaction_listing"
+			            },
+			            "Object": {
+			              "Role": "transaction_listing.expense_amount"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "transaction_listing_have_expense_amount"
+			        }
+			      ]
+			    },
+			    "transaction_listing_has_investments_": {
+			      "Binding": {
+			        "ConceptualEntity": "TransactionListing"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "transaction_listing": {
+			          "Target": {
+			            "Entity": "transaction_listing"
+			          }
+			        },
+			        "transaction_listing.investments_": {
+			          "Target": {
+			            "Entity": "transaction_listing.investments_"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transaction_listing"
+			            },
+			            "Object": {
+			              "Role": "transaction_listing.investments_"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "transaction_listing_have_investments_"
+			        }
+			      ]
+			    },
+			    "transaction_listing_has_needs_": {
+			      "Binding": {
+			        "ConceptualEntity": "TransactionListing"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "transaction_listing": {
+			          "Target": {
+			            "Entity": "transaction_listing"
+			          }
+			        },
+			        "transaction_listing.needs_": {
+			          "Target": {
+			            "Entity": "transaction_listing.needs_"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transaction_listing"
+			            },
+			            "Object": {
+			              "Role": "transaction_listing.needs_"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "transaction_listing_have_needs_"
+			        }
+			      ]
+			    },
+			    "transaction_listing_has_wants_": {
+			      "Binding": {
+			        "ConceptualEntity": "TransactionListing"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "transaction_listing": {
+			          "Target": {
+			            "Entity": "transaction_listing"
+			          }
+			        },
+			        "transaction_listing.wants_": {
+			          "Target": {
+			            "Entity": "transaction_listing.wants_"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transaction_listing"
+			            },
+			            "Object": {
+			              "Role": "transaction_listing.wants_"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "transaction_listing_have_wants_"
+			        }
+			      ]
+			    },
+			    "transaction_listing_has_total_income": {
+			      "Binding": {
+			        "ConceptualEntity": "TransactionListing"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "transaction_listing": {
+			          "Target": {
+			            "Entity": "transaction_listing"
+			          }
+			        },
+			        "transaction_listing.total_income": {
+			          "Target": {
+			            "Entity": "transaction_listing.total_income"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transaction_listing"
+			            },
+			            "Object": {
+			              "Role": "transaction_listing.total_income"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "transaction_listing_have_total_income"
+			        }
+			      ]
+			    },
+			    "transaction_listing_has_total_expense": {
+			      "Binding": {
+			        "ConceptualEntity": "TransactionListing"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "transaction_listing": {
+			          "Target": {
+			            "Entity": "transaction_listing"
+			          }
+			        },
+			        "transaction_listing.total_expense": {
+			          "Target": {
+			            "Entity": "transaction_listing.total_expense"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transaction_listing"
+			            },
+			            "Object": {
+			              "Role": "transaction_listing.total_expense"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "transaction_listing_have_total_expense"
+			        }
+			      ]
+			    },
+			    "transaction_listing_has_amount": {
+			      "Binding": {
+			        "ConceptualEntity": "TransactionListing"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "transaction_listing": {
+			          "Target": {
+			            "Entity": "transaction_listing"
+			          }
+			        },
+			        "transaction_listing.amount": {
+			          "Target": {
+			            "Entity": "transaction_listing.amount"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transaction_listing"
+			            },
+			            "Object": {
+			              "Role": "transaction_listing.amount"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "transaction_listing_have_amounts"
+			        }
+			      ]
+			    },
+			    "transaction_listing_has_description": {
+			      "Binding": {
+			        "ConceptualEntity": "TransactionListing"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "transaction_listing": {
+			          "Target": {
+			            "Entity": "transaction_listing"
+			          }
+			        },
+			        "transaction_listing.description": {
+			          "Target": {
+			            "Entity": "transaction_listing.description"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transaction_listing"
+			            },
+			            "Object": {
+			              "Role": "transaction_listing.description"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "transaction_listing_have_descriptions"
+			        }
+			      ]
+			    },
+			    "transaction_listing_has_date": {
+			      "Binding": {
+			        "ConceptualEntity": "TransactionListing"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "transaction_listing": {
+			          "Target": {
+			            "Entity": "transaction_listing"
+			          }
+			        },
+			        "transaction_listing.date": {
+			          "Target": {
+			            "Entity": "transaction_listing.date"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transaction_listing"
+			            },
+			            "Object": {
+			              "Role": "transaction_listing.date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "transaction_listing_have_dates"
 			        }
 			      ]
 			    }

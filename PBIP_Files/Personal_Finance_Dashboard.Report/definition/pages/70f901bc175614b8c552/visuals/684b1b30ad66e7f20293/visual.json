@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "684b1b30ad66e7f20293",
   "position": {
     "x": 800,
@@ -147,12 +147,6 @@
         }
       ]
     },
-    "syncGroup": {
-      "groupName": "Year",
-      "fieldChanges": true,
-      "filterChanges": true
-    },
-    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "visualHeader": [
         {
@@ -214,6 +208,12 @@
           }
         }
       ]
-    }
+    },
+    "syncGroup": {
+      "groupName": "Year",
+      "fieldChanges": true,
+      "filterChanges": true
+    },
+    "drillFilterOtherVisuals": true
   }
 }

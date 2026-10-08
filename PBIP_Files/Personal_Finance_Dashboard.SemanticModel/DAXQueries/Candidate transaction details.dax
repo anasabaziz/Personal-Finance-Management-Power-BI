@@ -1,0 +1,45 @@
+// Investigation context for matching rows and potential ledger aggregation collisions.
+// Description participates in grouping but is omitted from output to limit sensitive detail.
+// Separate groups can therefore show the same output context. Inspect source rows locally.
+// Do not delete candidates automatically; repeated purchases can be legitimate.
+DEFINE
+    VAR _matchingRows =
+        SUMMARIZECOLUMNS(
+            'TransactionListing'[Date],
+            'TransactionListing'[Source],
+            'TransactionListing'[Description],
+            'TransactionListing'[Amount],
+            'TransactionListing'[SubCategory],
+            "Group rows", COUNTROWS('TransactionListing')
+        )
+    VAR _displayGroups =
+        SUMMARIZECOLUMNS(
+            'TransactionListing'[Date],
+            'TransactionListing'[Source],
+            'TransactionListing'[Description],
+            'TransactionListing'[SubCategory],
+            "Group rows", COUNTROWS('TransactionListing'),
+            "Signed total", SUM('TransactionListing'[Amount])
+        )
+EVALUATE
+    UNION(
+        SELECTCOLUMNS(
+            FILTER(_matchingRows, [Group rows] > 1),
+            "Candidate type", "Matching full row",
+            "Date", 'TransactionListing'[Date],
+            "Source", 'TransactionListing'[Source],
+            "SubCategory", 'TransactionListing'[SubCategory],
+            "Rows", [Group rows],
+            "Signed total", 'TransactionListing'[Amount] * [Group rows]
+        ),
+        SELECTCOLUMNS(
+            FILTER(_displayGroups, [Group rows] > 1),
+            "Candidate type", "Ledger display collision",
+            "Date", 'TransactionListing'[Date],
+            "Source", 'TransactionListing'[Source],
+            "SubCategory", 'TransactionListing'[SubCategory],
+            "Rows", [Group rows],
+            "Signed total", [Signed total]
+        )
+    )
+ORDER BY [Candidate type], [Date], [Source], [SubCategory], [Signed total]

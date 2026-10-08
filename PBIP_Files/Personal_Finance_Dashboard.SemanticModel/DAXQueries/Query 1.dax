@@ -1,6 +1,16 @@
-// Welcome to DAX query view! Learn more about DAX queries at https://aka.ms/dax-queries.
-// Right-click on tables, columns, or measures in the data pane to access quick queries, or ask Copilot for help writing DAX.
-
-// Select "Run" to try this sample DAX query.
+// Full-data baseline. Standalone queries do not inherit report slicers.
+// Spending includes investment contributions under the current category convention.
 EVALUATE
-    TOPN(100, 'TransactionListing')
+    ROW(
+        "Transaction count", COUNTROWS('TransactionListing'),
+        "First transaction date", MIN('TransactionListing'[Date]),
+        "Last transaction date", MAX('TransactionListing'[Date]),
+        "Account count", DISTINCTCOUNT('TransactionListing'[Source]),
+        "Income", [Total Income],
+        "Signed expense", [Total Expense],
+        "Spending", [Expense Amount],
+        "Surplus", [Net Cash Flow],
+        "Surplus rate", [Savings Rate],
+        "All signed transactions", SUM('TransactionListing'[Amount]),
+        "Other signed movements", SUM('TransactionListing'[Amount]) - [Net Cash Flow]
+    )

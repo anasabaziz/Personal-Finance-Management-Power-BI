@@ -1,4 +1,17 @@
+// Account/month reconciliation. Compare counts and amounts with the source workbooks.
+// Return months with current transactions, excluding calendar-only months.
 EVALUATE
-    SUMMARIZECOLUMNS(
-        "Positive Amount", [Positive Amount]
+    FILTER(
+        SUMMARIZECOLUMNS(
+            'TransactionListing'[Source],
+            'DateCalendar'[Year],
+            'DateCalendar'[MonthNum],
+            "Transaction count", COUNTROWS('TransactionListing'),
+            "Signed total", SUM('TransactionListing'[Amount]),
+            "Income", [Total Income],
+            "Spending", [Expense Amount],
+            "Surplus", [Net Cash Flow]
+        ),
+        [Transaction count] > 0
     )
+ORDER BY 'TransactionListing'[Source], 'DateCalendar'[Year], 'DateCalendar'[MonthNum]

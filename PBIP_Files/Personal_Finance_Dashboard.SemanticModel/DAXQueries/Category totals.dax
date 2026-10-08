@@ -1,0 +1,17 @@
+// Inspect classification and allocation totals using signed source amounts.
+// Positive refunds reduce net expense. Asset movements are shown separately from expenses.
+EVALUATE
+    FILTER(
+        SUMMARIZECOLUMNS(
+            'TransactionCategory_dim'[Financial Type],
+            'TransactionCategory_dim'[Category],
+            'TransactionCategory_dim'[Allocation Type],
+            "Transaction count", COUNTROWS('TransactionListing'),
+            "Signed total", SUM('TransactionListing'[Amount])
+        ),
+        [Transaction count] > 0
+    )
+ORDER BY
+    'TransactionCategory_dim'[Financial Type],
+    'TransactionCategory_dim'[Category],
+    'TransactionCategory_dim'[Allocation Type]

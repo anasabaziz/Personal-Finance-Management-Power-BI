@@ -1,0 +1,39 @@
+// Standalone DAX queries do not inherit report slicers. Edit these three inputs deliberately.
+// _owner: "All", "Husband", or "Wife". _year: the calendar year to inspect.
+// TODAY() follows the DAX engine clock; use DATE(year, month, day) for a reproducible cutoff.
+// Cutoff values diagnose future-dated input; they do not change the report's actual/planned rules.
+DEFINE
+    VAR _owner = "All"
+    VAR _year = YEAR(TODAY())
+    VAR _cutoff = TODAY()
+    VAR _ownerFilter =
+        FILTER(
+            ALL('Owner_dim'[Owner]),
+            _owner = "All" || 'Owner_dim'[Owner] = _owner
+        )
+    VAR _yearFilter = TREATAS({_year}, 'DateCalendar'[Year])
+EVALUATE
+    CALCULATETABLE(
+        ROW(
+            "Selected owner", _owner,
+            "Selected year", _year,
+            "Cutoff date", _cutoff,
+            "Transaction count", COUNTROWS('TransactionListing'),
+            "Income", [Total Income],
+            "Spending", [Expense Amount],
+            "Surplus", [Net Cash Flow],
+            "Surplus rate", [Savings Rate],
+            "Transactions through cutoff",
+                COALESCE(CALCULATE(COUNTROWS('TransactionListing'), KEEPFILTERS('TransactionListing'[Date] <= _cutoff)), 0),
+            "Future transaction count",
+                COALESCE(CALCULATE(COUNTROWS('TransactionListing'), KEEPFILTERS('TransactionListing'[Date] > _cutoff)), 0),
+            "Income through cutoff",
+                CALCULATE([Total Income], KEEPFILTERS('TransactionListing'[Date] <= _cutoff)),
+            "Spending through cutoff",
+                CALCULATE([Expense Amount], KEEPFILTERS('TransactionListing'[Date] <= _cutoff)),
+            "Surplus through cutoff",
+                CALCULATE([Net Cash Flow], KEEPFILTERS('TransactionListing'[Date] <= _cutoff))
+        ),
+        _ownerFilter,
+        _yearFilter
+    )

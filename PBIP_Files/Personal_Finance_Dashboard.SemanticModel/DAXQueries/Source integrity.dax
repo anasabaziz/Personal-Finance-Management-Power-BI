@@ -1,0 +1,64 @@
+// Aggregate source-integrity diagnostics. Expected exceptions are zero for clean inputs.
+// Matching rows are candidates for investigation, not proof of duplicate imports.
+// Blank text includes empty and whitespace-only values. Unknown keys exclude these blanks.
+// Descriptions are used internally for matching but are not returned in the results.
+DEFINE
+    VAR _unknownCategories =
+        FILTER(
+            EXCEPT(
+                DISTINCT('TransactionListing'[SubCategory]),
+                DISTINCT('TransactionCategory_dim'[SubCategory])
+            ),
+            LEN(TRIM(COALESCE('TransactionListing'[SubCategory], ""))) > 0
+        )
+    VAR _unknownAccounts =
+        FILTER(
+            EXCEPT(
+                DISTINCT('TransactionListing'[Source]),
+                DISTINCT('Owner_dim'[Source])
+            ),
+            LEN(TRIM(COALESCE('TransactionListing'[Source], ""))) > 0
+        )
+    VAR _categoryKeys =
+        SUMMARIZECOLUMNS(
+            'TransactionCategory_dim'[SubCategory],
+            "Key rows", COUNTROWS('TransactionCategory_dim')
+        )
+    VAR _accountKeys =
+        SUMMARIZECOLUMNS(
+            'Owner_dim'[Source],
+            "Key rows", COUNTROWS('Owner_dim')
+        )
+    VAR _matchingRows =
+        SUMMARIZECOLUMNS(
+            'TransactionListing'[Date],
+            'TransactionListing'[Source],
+            'TransactionListing'[Description],
+            'TransactionListing'[Amount],
+            'TransactionListing'[SubCategory],
+            "Group rows", COUNTROWS('TransactionListing')
+        )
+    VAR _displayGroups =
+        SUMMARIZECOLUMNS(
+            'TransactionListing'[Date],
+            'TransactionListing'[Source],
+            'TransactionListing'[Description],
+            'TransactionListing'[SubCategory],
+            "Group rows", COUNTROWS('TransactionListing')
+        )
+EVALUATE
+    UNION(
+        ROW("Check", "Unknown category keys", "Count", COALESCE(COUNTROWS(_unknownCategories), 0)),
+        ROW("Check", "Unknown account keys", "Count", COALESCE(COUNTROWS(_unknownAccounts), 0)),
+        ROW("Check", "Duplicate category key groups", "Count", COALESCE(COUNTROWS(FILTER(_categoryKeys, [Key rows] > 1)), 0)),
+        ROW("Check", "Duplicate account key groups", "Count", COALESCE(COUNTROWS(FILTER(_accountKeys, [Key rows] > 1)), 0)),
+        ROW("Check", "Blank transaction dates", "Count", COALESCE(COUNTROWS(FILTER('TransactionListing', ISBLANK('TransactionListing'[Date]))), 0)),
+        ROW("Check", "Blank transaction amounts", "Count", COALESCE(COUNTROWS(FILTER('TransactionListing', ISBLANK('TransactionListing'[Amount]))), 0)),
+        ROW("Check", "Blank transaction sources", "Count", COALESCE(COUNTROWS(FILTER('TransactionListing', LEN(TRIM(COALESCE('TransactionListing'[Source], ""))) = 0)), 0)),
+        ROW("Check", "Blank transaction categories", "Count", COALESCE(COUNTROWS(FILTER('TransactionListing', LEN(TRIM(COALESCE('TransactionListing'[SubCategory], ""))) = 0)), 0)),
+        ROW("Check", "Blank transaction descriptions", "Count", COALESCE(COUNTROWS(FILTER('TransactionListing', LEN(TRIM(COALESCE('TransactionListing'[Description], ""))) = 0)), 0)),
+        ROW("Check", "Matching full-row candidate groups", "Count", COALESCE(COUNTROWS(FILTER(_matchingRows, [Group rows] > 1)), 0)),
+        ROW("Check", "Extra rows in full-row candidate groups", "Count", COALESCE(SUMX(FILTER(_matchingRows, [Group rows] > 1), [Group rows] - 1), 0)),
+        ROW("Check", "Ledger display collision candidate groups", "Count", COALESCE(COUNTROWS(FILTER(_displayGroups, [Group rows] > 1)), 0))
+    )
+ORDER BY [Check]

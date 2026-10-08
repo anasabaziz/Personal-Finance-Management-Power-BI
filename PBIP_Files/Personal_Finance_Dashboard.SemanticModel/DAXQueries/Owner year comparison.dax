@@ -1,0 +1,18 @@
+// Validate owner mappings and year filters against independently calculated source totals.
+// Do not assume transfers net to zero for an individual owner or year.
+EVALUATE
+    FILTER(
+        SUMMARIZECOLUMNS(
+            'Owner_dim'[Owner],
+            'DateCalendar'[Year],
+            "Transaction count", COUNTROWS('TransactionListing'),
+            "Signed total", SUM('TransactionListing'[Amount]),
+            "Income", [Total Income],
+            "Spending", [Expense Amount],
+            "Surplus", [Net Cash Flow],
+            "Surplus rate", [Savings Rate],
+            "Allocation combined share", [Needs %] + [Wants %] + [Investments %]
+        ),
+        [Transaction count] > 0
+    )
+ORDER BY 'Owner_dim'[Owner], 'DateCalendar'[Year]
